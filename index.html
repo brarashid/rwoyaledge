@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rwoyal Edge – Travel &amp; Recruitment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#" class="logo" onclick="showPage('home')">
+      <img src="logo.png" alt="Rwoyal Edge" class="nav-logo-img"/>
+      <span class="logo-text">RWOYAL <span class="logo-accent">EDGE</span></span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" onclick="showPage('home')" data-page="home">Home</a></li>
+      <li><a href="#" onclick="showPage('about')" data-page="about">About</a></li>
+      <li><a href="#" onclick="showPage('services')" data-page="services">Services</a></li>
+      <li><a href="#" onclick="showPage('gallery')" data-page="gallery">Gallery</a></li>
+      <li><a href="#" onclick="showPage('affiliate')" data-page="affiliate">Affiliate</a></li>
+      <li><a href="#" onclick="showPage('contact')" data-page="contact">Contact</a></li>
+      <li><a href="#" class="btn-primary nav-cta" onclick="showPage('contact')">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- =====================================================================  HOME  ===================================================================== -->
+<div id="page-home" class="page active">
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="hero-badge"><i data-lucide="globe" class="badge-ic"></i> Travel &amp; Recruitment Excellence</span>
+        <h1>Connecting <span class="text-blue">Talent</span> &amp;<br><span class="text-blue">Destinations</span> Worldwide</h1>
+        <p>Rwoyal Edge is your premium partner for global recruitment solutions and extraordinary travel experiences. We bridge opportunity with aspiration.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary" onclick="showPage('services')"><i data-lucide="compass"></i> Explore Services</a>
+          <a href="#" class="btn-secondary" onclick="showPage('about')"><i data-lucide="info"></i> Learn More</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>500+</strong><span>Clients Served</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><strong>30+</strong><span>Countries</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><strong>98%</strong><span>Satisfaction</span></div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80" alt="Travel"/>
+          <div class="hero-card floating"><i data-lucide="plane" class="hc-icon"></i><div><strong>New Opportunity</strong><small>Dubai, UAE</small></div></div>
+          <div class="hero-card floating-2"><i data-lucide="handshake" class="hc-icon"></i><div><strong>Job Placement</strong><small>Just Matched!</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING SECTION -->
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <div class="booking-header">
+        <span class="section-tag">Book Instantly</span>
+        <h2>Search, Compare &amp; <span class="text-blue">Book</span></h2>
+        <p>Flights, Hotels &amp; Airbnbs, and Car Rentals — all in one place</p>
+      </div>
+      <div class="booking-box">
+        <div class="b-tabs">
+          <button class="b-tab b-tab--active" onclick="switchBookTab('flights',this)"><i data-lucide="plane-takeoff"></i> Flights</button>
+          <button class="b-tab" onclick="switchBookTab('hotels',this)"><i data-lucide="hotel"></i> Hotels &amp; Airbnb</button>
+          <button class="b-tab" onclick="switchBookTab('cars',this)"><i data-lucide="car"></i> Car Rentals</button>
+        </div>
+        <!-- FLIGHTS -->
+        <div class="b-pane b-pane--active" id="pane-flights">
+          <div class="trip-pills">
+            <label class="rpill"><input type="radio" name="triptype" value="round" checked/><span>Round Trip</span></label>
+            <label class="rpill"><input type="radio" name="triptype" value="oneway"/><span>One Way</span></label>
+            <label class="rpill"><input type="radio" name="triptype" value="multi"/><span>Multi-City</span></label>
+          </div>
+          <div class="b-grid b-grid-flights">
+            <div class="b-field"><label><i data-lucide="map-pin"></i> From</label><input type="text" id="f-from" placeholder="City or Airport  e.g. Accra (ACC)"/></div>
+            <button class="swap-btn" onclick="swapFlightCities()" title="Swap"><i data-lucide="arrow-left-right"></i></button>
+            <div class="b-field"><label><i data-lucide="map-pin"></i> To</label><input type="text" id="f-to" placeholder="City or Airport  e.g. Dubai (DXB)"/></div>
+            <div class="b-field"><label><i data-lucide="calendar"></i> Depart</label><input type="date" id="f-depart"/></div>
+            <div class="b-field" id="f-return-wrap"><label><i data-lucide="calendar"></i> Return</label><input type="date" id="f-return"/></div>
+            <div class="b-field"><label><i data-lucide="users"></i> Passengers &amp; Class</label>
+              <select><option>1 Adult — Economy</option><option>2 Adults — Economy</option><option>1 Adult — Business</option><option>2 Adults — Business</option><option>Family (2+2) — Economy</option></select>
+            </div>
+          </div>
+          <div class="b-action"><button class="btn-primary b-search-btn" onclick="handleBook('flight')"><i data-lucide="search"></i> Search Flights</button></div>
+        </div>
+        <!-- HOTELS -->
+        <div class="b-pane" id="pane-hotels">
+          <div class="trip-pills">
+            <label class="rpill"><input type="radio" name="proptype" value="hotel" checked/><span>Hotel</span></label>
+            <label class="rpill"><input type="radio" name="proptype" value="airbnb"/><span>Airbnb / Apartment</span></label>
+            <label class="rpill"><input type="radio" name="proptype" value="resort"/><span>Resort</span></label>
+          </div>
+          <div class="b-grid b-grid-3">
+            <div class="b-field b-field--full"><label><i data-lucide="search"></i> Destination or Property Name</label><input type="text" placeholder="City, region, or hotel name"/></div>
+            <div class="b-field"><label><i data-lucide="calendar"></i> Check-in</label><input type="date"/></div>
+            <div class="b-field"><label><i data-lucide="calendar"></i> Check-out</label><input type="date"/></div>
+            <div class="b-field"><label><i data-lucide="users"></i> Guests &amp; Rooms</label>
+              <select><option>1 Guest — 1 Room</option><option>2 Guests — 1 Room</option><option>2 Guests — 2 Rooms</option><option>4 Guests — 2 Rooms</option><option>Family Package</option></select>
+            </div>
+            <div class="b-field"><label><i data-lucide="star"></i> Star Rating</label>
+              <select><option value="">Any Rating</option><option>3 Stars</option><option>4 Stars</option><option>5 Stars</option><option>Luxury / Boutique</option></select>
+            </div>
+          </div>
+          <div class="b-action"><button class="btn-primary b-search-btn" onclick="handleBook('hotel')"><i data-lucide="search"></i> Search Hotels &amp; Airbnbs</button></div>
+        </div>
+        <!-- CARS -->
+        <div class="b-pane" id="pane-cars">
+          <div class="b-grid b-grid-3">
+            <div class="b-field b-field--full"><label><i data-lucide="map-pin"></i> Pick-up Location</label><input type="text" placeholder="City, airport, or address"/></div>
+            <div class="b-field"><label><i data-lucide="calendar-clock"></i> Pick-up Date &amp; Time</label><input type="datetime-local"/></div>
+            <div class="b-field"><label><i data-lucide="calendar-clock"></i> Drop-off Date &amp; Time</label><input type="datetime-local"/></div>
+            <div class="b-field"><label><i data-lucide="car"></i> Car Type</label>
+              <select><option value="">Any Type</option><option>Economy / Compact</option><option>Saloon / Sedan</option><option>SUV / 4x4</option><option>Minivan</option><option>Luxury / Premium</option></select>
+            </div>
+            <div class="b-field"><label><i data-lucide="user"></i> Driver's Age</label>
+              <select><option>25–65 years</option><option>21–24 years</option><option>66+ years</option></select>
+            </div>
+          </div>
+          <div class="b-action"><button class="btn-primary b-search-btn" onclick="handleBook('car')"><i data-lucide="search"></i> Search Car Rentals</button></div>
+        </div>
+        <div class="b-toast" id="bToast">
+          <i data-lucide="check-circle" class="toast-check"></i>
+          <div><strong id="toastHeading">Request Sent!</strong><p id="toastBody">Our team will reach out shortly.</p></div>
+          <button class="toast-x" onclick="closeToast()"><i data-lucide="x"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE SERVICES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What We Do</span>
+        <h2>Our Core <span class="text-blue">Services</span></h2>
+        <p>Delivering excellence across travel and talent acquisition</p>
+      </div>
+      <div class="cards-grid">
+        <div class="service-card"><div class="service-icon"><i data-lucide="globe"></i></div><h3>Global Recruitment</h3><p>End-to-end hiring solutions connecting top talent with leading organisations worldwide.</p><a href="#" class="link-arrow" onclick="showPage('services')">Learn more <i data-lucide="arrow-right"></i></a></div>
+        <div class="service-card"><div class="service-icon"><i data-lucide="plane"></i></div><h3>Travel Planning</h3><p>Bespoke travel packages crafted for business or leisure, designed around your goals.</p><a href="#" class="link-arrow" onclick="showPage('services')">Learn more <i data-lucide="arrow-right"></i></a></div>
+        <div class="service-card"><div class="service-icon"><i data-lucide="file-check"></i></div><h3>Visa Assistance</h3><p>Expert guidance through complex visa processes for seamless international mobility.</p><a href="#" class="link-arrow" onclick="showPage('services')">Learn more <i data-lucide="arrow-right"></i></a></div>
+        <div class="service-card"><div class="service-icon"><i data-lucide="graduation-cap"></i></div><h3>Career Coaching</h3><p>Personalised coaching to sharpen your CV, interview skills, and career trajectory.</p><a href="#" class="link-arrow" onclick="showPage('services')">Learn more <i data-lucide="arrow-right"></i></a></div>
+        <div class="service-card"><div class="service-icon"><i data-lucide="building-2"></i></div><h3>Accommodation</h3><p>Premium lodging solutions for relocating professionals and corporate travellers.</p><a href="#" class="link-arrow" onclick="showPage('services')">Learn more <i data-lucide="arrow-right"></i></a></div>
+        <div class="service-card"><div class="service-icon"><i data-lucide="headset"></i></div><h3>Consultation</h3><p>One-on-one advisory sessions tailored to your travel and recruitment needs.</p><a href="#" class="link-arrow" onclick="showPage('services')">Learn more <i data-lucide="arrow-right"></i></a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="why-layout">
+        <div class="why-image">
+          <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=600&q=80" alt="Team"/>
+          <div class="why-badge"><strong>10+ Years</strong><span>of Excellence</span></div>
+        </div>
+        <div class="why-content">
+          <h2>Why Choose <span class="text-blue">Rwoyal Edge?</span></h2>
+          <p>We combine deep industry expertise with a personal touch, ensuring every client receives tailored solutions that drive real results.</p>
+          <ul class="why-list">
+            <li><span class="check"><i data-lucide="check"></i></span>Certified recruitment and travel professionals</li>
+            <li><span class="check"><i data-lucide="check"></i></span>Transparent process with no hidden costs</li>
+            <li><span class="check"><i data-lucide="check"></i></span>Strong global network across 30+ countries</li>
+            <li><span class="check"><i data-lucide="check"></i></span>Dedicated support from start to finish</li>
+            <li><span class="check"><i data-lucide="check"></i></span>Proven track record with 500+ clients</li>
+          </ul>
+          <a href="#" class="btn-primary" onclick="showPage('about')"><i data-lucide="users"></i> About Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION VISION VALUES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Foundation</span>
+        <h2>Mission, Vision &amp; <span class="text-blue">Values</span></h2>
+      </div>
+      <div class="mvv-grid">
+        <div class="mvv-card"><div class="mvv-icon"><i data-lucide="target"></i></div><h3>Our Mission</h3><p>To empower individuals and organisations through exceptional recruitment and travel services that create lasting impact and unlock global opportunities.</p></div>
+        <div class="mvv-card mvv-featured"><div class="mvv-icon"><i data-lucide="eye"></i></div><h3>Our Vision</h3><p>To be the most trusted and innovative travel and recruitment partner in Africa and beyond, recognised for integrity, excellence, and transformative results.</p></div>
+        <div class="mvv-card"><div class="mvv-icon"><i data-lucide="gem"></i></div><h3>Core Values</h3><ul class="values-list"><li>Integrity &amp; Transparency</li><li>Client-First Approach</li><li>Excellence in Delivery</li><li>Global Mindset</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS HOME — EXPANDED -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Client Stories</span>
+        <h2>What Our <span class="text-blue">Clients Say</span></h2>
+        <p>Real experiences from the people and organisations we've had the privilege of serving</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card featured-testi">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Rwoyal Edge completely transformed our hiring process. Within three weeks they placed three outstanding candidates who are now integral to our team. The professionalism and speed were unmatched by any agency we've used before.</p>
+          <div class="testi-author">
+            <img src="https://images.unsplash.com/photo-1507152832244-10d45c7eda57?w=80&q=80" alt="Daniel K"/>
+            <div><strong>Daniel Kuffour</strong><span>CEO, TechBridge Ghana</span></div>
+            <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">My visa process was seamless and stress-free. Rwoyal Edge handled every document and kept me informed at every step. I made it to Dubai on time and with full confidence. Truly outstanding service.</p>
+          <div class="testi-author">
+            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=80&q=80" alt="Ama S"/>
+            <div><strong>Ama Sarpong</strong><span>Healthcare Professional</span></div>
+            <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Our corporate travel was always chaotic until we partnered with Rwoyal Edge. Now it's coordinated, cost-effective, and our staff actually look forward to business trips. The entire team has noticed the difference.</p>
+          <div class="testi-author">
+            <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=80&q=80" alt="Kofi M"/>
+            <div><strong>Kofi Mensah</strong><span>COO, Nexagen Industries</span></div>
+            <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">The career coaching sessions gave me clarity and confidence I never had. I landed a senior role in London within two months. Rwoyal Edge not only prepared me — they believed in me when I didn't believe in myself.</p>
+          <div class="testi-author">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&q=80" alt="Efua A"/>
+            <div><strong>Efua Acheampong</strong><span>Senior Finance Analyst, London</span></div>
+            <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">I booked our honeymoon package through Rwoyal Edge and it was absolutely perfect. Every single detail was arranged — flights, transfers, the beachfront villa. My wife and I couldn't have asked for more. Will definitely return.</p>
+          <div class="testi-author">
+            <img src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=80&q=80" alt="Kwame A"/>
+            <div><strong>Kwame Asante</strong><span>Leisure Travel Client</span></div>
+            <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">From the first consultation to final placement, their team was thorough, responsive, and genuinely invested in our success. I refer every business owner I know to Rwoyal Edge without hesitation. They simply deliver.</p>
+          <div class="testi-author">
+            <img src="https://images.unsplash.com/photo-1530268729831-4b0b9e170218?w=80&q=80" alt="James A"/>
+            <div><strong>James Appiah</strong><span>Director, Meridian Consulting</span></div>
+            <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">I was sceptical about using a recruitment agency but Rwoyal Edge changed my mind completely. They understood exactly what I was looking for and found me a role that aligned with my values and ambitions. Best decision I made.</p>
+          <div class="testi-author">
+            <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=80&q=80" alt="Abena O"/>
+            <div><strong>Abena Owusu</strong><span>HR Manager, Accra</span></div>
+            <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Rwoyal Edge coordinated our school's educational tour to South Africa flawlessly. 40 students, seamless logistics, incredible experiences. The children came back transformed. We can't wait to plan the next trip with them.</p>
+          <div class="testi-author">
+            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=80&q=80" alt="Mrs Asante"/>
+            <div><strong>Mrs. Akua Asante</strong><span>Principal, Executive International School</span></div>
+            <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">As a credit union, we needed reliable partners to facilitate travel benefits for our members. Rwoyal Edge delivered beyond expectations — our members now enjoy exclusive travel packages at truly competitive rates.</p>
+          <div class="testi-author">
+            <img src="https://images.unsplash.com/photo-1542190891-2093d38760f2?w=80&q=80" alt="Mr Boateng"/>
+            <div><strong>Mr. Samuel Boateng</strong><span>CEO, ATCCU</span></div>
+            <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="section partners-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Trusted By</span>
+        <h2>Our <span class="text-blue">Partners</span></h2>
+        <p>We collaborate with leading organisations across sectors to deliver world-class outcomes</p>
+      </div>
+      <div class="partners-track-wrap">
+        <div class="partners-track">
+          <div class="partner-logo"><i data-lucide="landmark"></i><strong>GCB Bank</strong></div>
+          <div class="partner-logo"><i data-lucide="plane"></i><strong>Africa World Airlines</strong></div>
+          <div class="partner-logo"><i data-lucide="heart-pulse"></i><strong>Korle-Bu Hospital</strong></div>
+          <div class="partner-logo"><i data-lucide="hard-hat"></i><strong>Coastline Builders</strong></div>
+          <div class="partner-logo"><i data-lucide="monitor-dot"></i><strong>TechNexus Africa</strong></div>
+          <div class="partner-logo"><i data-lucide="building-2"></i><strong>Kempinski Hotels</strong></div>
+          <div class="partner-logo"><i data-lucide="bar-chart-2"></i><strong>PriceWater Advisory</strong></div>
+          <div class="partner-logo"><i data-lucide="ship"></i><strong>Gulf Shipping Co.</strong></div>
+          <div class="partner-logo"><i data-lucide="landmark"></i><strong>GCB Bank</strong></div>
+          <div class="partner-logo"><i data-lucide="plane"></i><strong>Africa World Airlines</strong></div>
+          <div class="partner-logo"><i data-lucide="heart-pulse"></i><strong>Korle-Bu Hospital</strong></div>
+          <div class="partner-logo"><i data-lucide="hard-hat"></i><strong>Coastline Builders</strong></div>
+          <div class="partner-logo"><i data-lucide="monitor-dot"></i><strong>TechNexus Africa</strong></div>
+          <div class="partner-logo"><i data-lucide="building-2"></i><strong>Kempinski Hotels</strong></div>
+          <div class="partner-logo"><i data-lucide="bar-chart-2"></i><strong>PriceWater Advisory</strong></div>
+          <div class="partner-logo"><i data-lucide="ship"></i><strong>Gulf Shipping Co.</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container"><div class="cta-content">
+      <h2>Ready to Take the Next Step?</h2>
+      <p>Whether you're seeking talent or your next adventure, we're here to guide you every step of the way.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn-white" onclick="showPage('contact')"><i data-lucide="send"></i> Contact Us Today</a>
+        <a href="#" class="btn-outline-white" onclick="showPage('services')"><i data-lucide="briefcase"></i> View Services</a>
+      </div>
+    </div></div>
+  </section>
+
+</div><!-- /home -->
+
+<!-- =====================================================================  ABOUT  ===================================================================== -->
+<div id="page-about" class="page">
+
+  <section class="page-hero page-hero-photo" style="background-image:url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1600&q=85')">
+    <div class="pho"></div>
+    <div class="container phc">
+      <nav class="breadcrumb"><a onclick="showPage('home')">Home</a><i data-lucide="chevron-right"></i><span>About</span></nav>
+      <span class="section-tag tag-white">Who We Are</span>
+      <h1 class="hw">About <span class="ha">Rwoyal Edge</span></h1>
+      <p class="hs">A premier travel and recruitment company built on trust, excellence, and global reach — connecting Africa to the world.</p>
+      <div class="ph-stats">
+        <div class="phs"><strong>500+</strong><span>Happy Clients</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>30+</strong><span>Countries</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>10+</strong><span>Years Active</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>98%</strong><span>Satisfaction</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="about-layout">
+        <div class="about-content">
+          <span class="section-tag">Our Story</span>
+          <h2>Building Bridges, <span class="text-blue">Creating Futures</span></h2>
+          <p>Rwoyal Edge was founded with a singular purpose: to bridge the gap between exceptional talent and global opportunity. What began as a boutique consultancy has grown into a full-service travel and recruitment powerhouse, operating across Africa, Europe, the Middle East, and beyond.</p>
+          <p>Our team of seasoned professionals combines deep industry knowledge with a genuine passion for people — whether that means placing the right candidate in a life-changing role or crafting a seamless travel experience that exceeds every expectation.</p>
+          <p>Today, we are proud to serve hundreds of individuals and organisations who trust Rwoyal Edge to navigate the complexities of global mobility and talent acquisition.</p>
+          <a href="#" class="btn-primary" onclick="showPage('contact')"><i data-lucide="send"></i> Work With Us</a>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80" alt="Our Team"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM WITH SOCIALS -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our People</span>
+        <h2>Meet the <span class="text-blue">Team</span></h2>
+        <p>Dedicated professionals committed to your success</p>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="team-img"><img src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=300&q=80" alt="CEO"/></div>
+          <div class="team-body">
+            <h4>Rowland Ayetey Johnson</h4>
+            <span class="team-role">Founder &amp; CEO</span>
+            <p>Visionary leader with 10+ years in international recruitment and travel management.</p>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn" class="ts-btn"><i data-lucide="linkedin"></i></a>
+              <a href="#" title="Facebook" class="ts-btn"><i data-lucide="facebook"></i></a>
+              <a href="#" title="Instagram" class="ts-btn"><i data-lucide="instagram"></i></a>
+              <a href="#" title="Profile" class="ts-btn ts-profile"><i data-lucide="user"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img"><img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=300&q=80" alt="Director"/></div>
+          <div class="team-body">
+            <h4>Abdul Rashid Boyefio</h4>
+            <span class="team-role">Operations Director &amp; Co-Founder</span>
+            <p>Expert in client relations and seamless operational delivery across global markets.</p>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn" class="ts-btn"><i data-lucide="linkedin"></i></a>
+              <a href="#" title="Facebook" class="ts-btn"><i data-lucide="facebook"></i></a>
+              <a href="#" title="Instagram" class="ts-btn"><i data-lucide="instagram"></i></a>
+              <a href="#" title="Profile" class="ts-btn ts-profile"><i data-lucide="user"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&q=80" alt="Head"/></div>
+          <div class="team-body">
+            <h4>Freda Ayee</h4>
+            <span class="team-role">Head of Recruitment</span>
+            <p>Specialist in executive search and talent acquisition across multiple industries.</p>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn" class="ts-btn"><i data-lucide="linkedin"></i></a>
+              <a href="#" title="Facebook" class="ts-btn"><i data-lucide="facebook"></i></a>
+              <a href="#" title="Instagram" class="ts-btn"><i data-lucide="instagram"></i></a>
+              <a href="#" title="Profile" class="ts-btn ts-profile"><i data-lucide="user"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img"><img src="https://images.unsplash.com/photo-1507152832244-10d45c7eda57?w=300&q=80" alt="Manager"/></div>
+          <div class="team-body">
+            <h4>Abraham Offei Dodoo</h4>
+            <span class="team-role">Travel Manager</span>
+            <p>Curates bespoke travel experiences for both corporate and leisure clients worldwide.</p>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn" class="ts-btn"><i data-lucide="linkedin"></i></a>
+              <a href="#" title="Facebook" class="ts-btn"><i data-lucide="facebook"></i></a>
+              <a href="#" title="Instagram" class="ts-btn"><i data-lucide="instagram"></i></a>
+              <a href="#" title="Profile" class="ts-btn ts-profile"><i data-lucide="user"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=300&q=80" alt="Linda"/></div>
+          <div class="team-body">
+            <h4>Linda Mensah</h4>
+            <span class="team-role">Visa Processing Officer</span>
+            <p>Handles visa documentation and ensures smooth application approvals for clients.</p>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn" class="ts-btn"><i data-lucide="linkedin"></i></a>
+              <a href="#" title="Facebook" class="ts-btn"><i data-lucide="facebook"></i></a>
+              <a href="#" title="Instagram" class="ts-btn"><i data-lucide="instagram"></i></a>
+              <a href="#" title="Profile" class="ts-btn ts-profile"><i data-lucide="user"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img"><img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=300&q=80" alt="Daniel"/></div>
+          <div class="team-body">
+            <h4>Daniel Boateng</h4>
+            <span class="team-role">Customer Support Lead</span>
+            <p>Provides timely assistance and ensures excellent client communication and support.</p>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn" class="ts-btn"><i data-lucide="linkedin"></i></a>
+              <a href="#" title="Facebook" class="ts-btn"><i data-lucide="facebook"></i></a>
+              <a href="#" title="Instagram" class="ts-btn"><i data-lucide="instagram"></i></a>
+              <a href="#" title="Profile" class="ts-btn ts-profile"><i data-lucide="user"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img"><img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=300&q=80" alt="Grace"/></div>
+          <div class="team-body">
+            <h4>Grace Owusu</h4>
+            <span class="team-role">Travel Consultant</span>
+            <p>Helps clients plan smooth and affordable travel experiences across destinations.</p>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn" class="ts-btn"><i data-lucide="linkedin"></i></a>
+              <a href="#" title="Facebook" class="ts-btn"><i data-lucide="facebook"></i></a>
+              <a href="#" title="Instagram" class="ts-btn"><i data-lucide="instagram"></i></a>
+              <a href="#" title="Profile" class="ts-btn ts-profile"><i data-lucide="user"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img"><img src="https://images.unsplash.com/photo-1530268729831-4b0b9e170218?w=300&q=80" alt="Michael"/></div>
+          <div class="team-body">
+            <h4>Michael Addo</h4>
+            <span class="team-role">Logistics Coordinator</span>
+            <p>Manages airport transfers, bookings, and smooth travel logistics for clients.</p>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn" class="ts-btn"><i data-lucide="linkedin"></i></a>
+              <a href="#" title="Facebook" class="ts-btn"><i data-lucide="facebook"></i></a>
+              <a href="#" title="Instagram" class="ts-btn"><i data-lucide="instagram"></i></a>
+              <a href="#" title="Profile" class="ts-btn ts-profile"><i data-lucide="user"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&q=80" alt="Sarah"/></div>
+          <div class="team-body">
+            <h4>Sarah Akosua</h4>
+            <span class="team-role">Documentation Officer</span>
+            <p>Ensures all client documents are accurate, verified, and properly processed.</p>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn" class="ts-btn"><i data-lucide="linkedin"></i></a>
+              <a href="#" title="Facebook" class="ts-btn"><i data-lucide="facebook"></i></a>
+              <a href="#" title="Instagram" class="ts-btn"><i data-lucide="instagram"></i></a>
+              <a href="#" title="Profile" class="ts-btn ts-profile"><i data-lucide="user"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img"><img src="https://images.unsplash.com/photo-1542190891-2093d38760f2?w=300&q=80" alt="Prince"/></div>
+          <div class="team-body">
+            <h4>Prince Yeboah</h4>
+            <span class="team-role">IT &amp; Systems Support</span>
+            <p>Maintains company systems, website performance, and technical operations.</p>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn" class="ts-btn"><i data-lucide="linkedin"></i></a>
+              <a href="#" title="Facebook" class="ts-btn"><i data-lucide="facebook"></i></a>
+              <a href="#" title="Instagram" class="ts-btn"><i data-lucide="instagram"></i></a>
+              <a href="#" title="Profile" class="ts-btn ts-profile"><i data-lucide="user"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Principles</span>
+        <h2>The Values That <span class="text-blue">Guide Us</span></h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-item"><div class="val-ic"><i data-lucide="handshake"></i></div><h4>Integrity</h4><p>We operate with honesty, transparency, and respect in every engagement.</p></div>
+        <div class="value-item"><div class="val-ic"><i data-lucide="award"></i></div><h4>Excellence</h4><p>We hold ourselves to the highest standards in everything we deliver.</p></div>
+        <div class="value-item"><div class="val-ic"><i data-lucide="globe"></i></div><h4>Global Vision</h4><p>We think beyond borders, connecting people and opportunities worldwide.</p></div>
+        <div class="value-item"><div class="val-ic"><i data-lucide="lightbulb"></i></div><h4>Innovation</h4><p>We embrace change and continually refine our approach to serve you better.</p></div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /about -->
+
+<!-- =====================================================================  SERVICES  ===================================================================== -->
+<div id="page-services" class="page">
+
+  <section class="page-hero page-hero-photo" style="background-image:url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1600&q=85')">
+    <div class="pho"></div>
+    <div class="container phc">
+      <nav class="breadcrumb"><a onclick="showPage('home')">Home</a><i data-lucide="chevron-right"></i><span>Services</span></nav>
+      <span class="section-tag tag-white">What We Offer</span>
+      <h1 class="hw">Our <span class="ha">Services</span></h1>
+      <p class="hs">Comprehensive solutions designed to connect talent with opportunity and travellers with the world.</p>
+      <div class="ph-stats">
+        <div class="phs"><strong>9+</strong><span>Core Services</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>30+</strong><span>Countries</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>500+</strong><span>Clients</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>24/7</strong><span>Support</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="services-full-grid">
+        <div class="service-full-card"><div class="sf-icon"><i data-lucide="globe"></i></div><h3>Global Recruitment</h3><p>Our recruitment specialists source, vet, and place top-tier professionals across industries including hospitality, healthcare, technology, finance, and construction. We manage the full hiring cycle.</p></div>
+        <div class="service-full-card"><div class="sf-icon"><i data-lucide="plane"></i></div><h3>Travel Planning</h3><p>From solo expeditions to large corporate travel programmes, we design end-to-end itineraries that balance efficiency, comfort, and experience. Flights, transfers, accommodation, and excursions — all handled.</p></div>
+        <div class="service-full-card"><div class="sf-icon"><i data-lucide="file-check"></i></div><h3>Visa &amp; Immigration Assistance</h3><p>Navigating immigration requirements can be complex. Our experts guide you through visa applications, documentation, and embassy requirements, ensuring a smooth and timely process every time.</p></div>
+        <div class="service-full-card"><div class="sf-icon"><i data-lucide="graduation-cap"></i></div><h3>Career Coaching</h3><p>Unlock your career potential with our personalised coaching sessions. We help you craft a compelling CV, prepare for interviews, develop your personal brand, and identify the right opportunities.</p></div>
+        <div class="service-full-card"><div class="sf-icon"><i data-lucide="building-2"></i></div><h3>Accommodation &amp; Relocation</h3><p>Whether you're a professional relocating internationally or a business housing visiting staff, we secure premium, vetted accommodation tailored to your timeline, budget, and preferences.</p></div>
+        <div class="service-full-card"><div class="sf-icon"><i data-lucide="briefcase"></i></div><h3>Corporate Travel Management</h3><p>We partner with businesses to streamline and manage their travel programmes — providing cost efficiency, policy compliance, and a seamless experience for every travelling employee.</p></div>
+        <div class="service-full-card"><div class="sf-icon"><i data-lucide="headset"></i></div><h3>Strategic Consultation</h3><p>Our consultants work closely with organisations to develop talent acquisition strategies and travel policies aligned with business objectives and international best practices.</p></div>
+        <div class="service-full-card"><div class="sf-icon"><i data-lucide="sun"></i></div><h3>Leisure &amp; Holiday Packages</h3><p>Explore curated holiday packages to top global destinations. Honeymoons, family vacations, group tours — we make sure every moment counts from departure to return.</p></div>
+        <div class="service-full-card"><div class="sf-icon"><i data-lucide="shield-check"></i></div><h3>Travel Insurance</h3><p>Travel with confidence. We assist with sourcing comprehensive travel insurance plans that cover medical, cancellation, baggage, and more, so you're protected wherever you go.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header"><span class="section-tag">How We Work</span><h2>Our <span class="text-blue">Process</span></h2><p>A streamlined approach built around your needs</p></div>
+      <div class="process-steps">
+        <div class="step"><div class="step-num">01</div><h4>Initial Consultation</h4><p>We begin with a deep-dive conversation to understand your needs, goals, and expectations.</p></div>
+        <div class="step-arrow"><i data-lucide="arrow-right"></i></div>
+        <div class="step"><div class="step-num">02</div><h4>Strategy &amp; Planning</h4><p>Our team crafts a tailored plan — whether a recruitment drive or a detailed travel itinerary.</p></div>
+        <div class="step-arrow"><i data-lucide="arrow-right"></i></div>
+        <div class="step"><div class="step-num">03</div><h4>Execution</h4><p>We execute with precision, managing every detail so you don't have to worry about a thing.</p></div>
+        <div class="step-arrow"><i data-lucide="arrow-right"></i></div>
+        <div class="step"><div class="step-num">04</div><h4>Ongoing Support</h4><p>Our relationship doesn't end at delivery — we provide continued support and follow-up care.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Client Stories</span>
+        <h2>Hear From Our <span class="text-blue">Clients</span></h2>
+        <p>Watch real stories from people and businesses whose lives we've helped transform</p>
+      </div>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/ZOIMsFCB4Nk?rel=0&modestbranding=1" title="Recruitment" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="video-info"><h4>Transforming Our Hiring Process</h4><p>How a Ghanaian tech company scaled their team globally with Rwoyal Edge recruitment.</p><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+        </div>
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/RgKAFK5djSk?rel=0&modestbranding=1" title="Travel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="video-info"><h4>A Dream Trip, Perfectly Planned</h4><p>A client shares their experience booking a full family holiday package through Rwoyal Edge.</p><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+        </div>
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/mP_N4FJNv6Q?rel=0&modestbranding=1" title="Visa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="video-info"><h4>Seamless Visa &amp; Relocation</h4><p>A healthcare professional describes how Rwoyal Edge made her international move stress-free.</p><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container"><div class="cta-content">
+      <h2>Need a Custom Solution?</h2>
+      <p>Contact us today for a personalised consultation and let us design the perfect package for you.</p>
+      <a href="#" class="btn-white" onclick="showPage('contact')"><i data-lucide="send"></i> Get in Touch</a>
+    </div></div>
+  </section>
+
+</div><!-- /services -->
+
+<!-- =====================================================================  GALLERY  ===================================================================== -->
+<div id="page-gallery" class="page">
+
+  <section class="page-hero page-hero-photo" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=85')">
+    <div class="pho"></div>
+    <div class="container phc">
+      <nav class="breadcrumb"><a onclick="showPage('home')">Home</a><i data-lucide="chevron-right"></i><span>Gallery</span></nav>
+      <span class="section-tag tag-white">Our World</span>
+      <h1 class="hw">Our <span class="ha">Gallery</span></h1>
+      <p class="hs">Moments of connection, adventure, and achievement captured across our global journey.</p>
+      <div class="ph-stats">
+        <div class="phs"><strong>100+</strong><span>Destinations</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>30+</strong><span>Countries</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>500+</strong><span>Happy Clients</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>10+</strong><span>Years of Stories</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="gallery-grid">
+        <div class="gallery-item tall"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="Aviation"/><div class="gallery-overlay"><span>Aviation &amp; Travel</span></div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=600&q=80" alt="Team"/><div class="gallery-overlay"><span>Our Team at Work</span></div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80" alt="Recruitment"/><div class="gallery-overlay"><span>Recruitment Sessions</span></div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="City"/><div class="gallery-overlay"><span>Global Destinations</span></div></div>
+        <div class="gallery-item wide"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80" alt="Landscape"/><div class="gallery-overlay"><span>Beautiful Journeys</span></div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80" alt="Corporate"/><div class="gallery-overlay"><span>Corporate Events</span></div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80" alt="Collaboration"/><div class="gallery-overlay"><span>Collaboration</span></div></div>
+        <div class="gallery-item tall"><img src="https://images.unsplash.com/photo-1507152832244-10d45c7eda57?w=600&q=80" alt="Professionals"/><div class="gallery-overlay"><span>City Placements</span></div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=600&q=80" alt="Travel"/><div class="gallery-overlay"><span>Travel Experiences</span></div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=600&q=80" alt="Business"/><div class="gallery-overlay"><span>Business Consulting</span></div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=600&q=80" alt="Ocean"/><div class="gallery-overlay"><span>Leisure Travel</span></div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80" alt="Hotel"/><div class="gallery-overlay"><span>Premium Accommodation</span></div></div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /gallery -->
+
+<!-- =====================================================================  AFFILIATE  ===================================================================== -->
+<div id="page-affiliate" class="page">
+
+  <section class="page-hero page-hero-photo" style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=85')">
+    <div class="pho"></div>
+    <div class="container phc">
+      <nav class="breadcrumb"><a onclick="showPage('home')">Home</a><i data-lucide="chevron-right"></i><span>Affiliate</span></nav>
+      <span class="section-tag tag-white">Partner With Us</span>
+      <h1 class="hw">Affiliate &amp; <span class="ha">Partnerships</span></h1>
+      <p class="hs">Building long-term relationships with institutions and organisations that share our vision of excellence and global opportunity.</p>
+      <div class="ph-stats">
+        <div class="phs"><strong>6+</strong><span>Institutional Partners</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>200+</strong><span>Active Affiliates</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>15%</strong><span>Avg. Commission</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>Monthly</strong><span>Payouts</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTITUTIONAL AFFILIATIONS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Institutional Partners</span>
+        <h2>Affiliations &amp; <span class="text-blue">Collaborative Work</span></h2>
+        <p>We are proud to work with a distinguished network of institutions across education, construction, finance, and community service</p>
+      </div>
+      <div class="affil-grid">
+
+        <!-- Executive Education Consult -->
+        <div class="affil-card">
+          <div class="affil-icon-wrap"><i data-lucide="book-open"></i></div>
+          <div class="affil-content">
+            <div class="affil-badge">Education Partner</div>
+            <h3>Executive Education Consult</h3>
+            <p class="affil-desc">A leading education consultancy dedicated to developing talent through quality training and academic pathways across Ghana and beyond.</p>
+            <div class="affil-works">
+              <h5><i data-lucide="check-circle"></i> What We've Done Together</h5>
+              <ul>
+                <li><i data-lucide="plane"></i><div><strong>International Study Tours</strong><span>Co-organised three international study tours to the United Kingdom, Germany, and South Africa, enabling participants to experience world-class academic institutions first-hand.</span></div></li>
+                <li><i data-lucide="users"></i><div><strong>Professional Development Travel</strong><span>Facilitated travel and logistics for over 80 educators and consultants attending international conferences and professional development programmes in Europe and Asia.</span></div></li>
+                <li><i data-lucide="briefcase"></i><div><strong>Talent Recruitment</strong><span>Jointly sourced and placed qualified education consultants and trainers for Executive Education Consult's expanding team across Accra, Kumasi, and Takoradi.</span></div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marshalls -->
+        <div class="affil-card">
+          <div class="affil-icon-wrap"><i data-lucide="shopping-bag"></i></div>
+          <div class="affil-content">
+            <div class="affil-badge">Retail Partner</div>
+            <h3>Marshalls</h3>
+            <p class="affil-desc">A respected retail and distribution brand operating across Ghana, known for quality products and strong community ties in the retail and consumer sector.</p>
+            <div class="affil-works">
+              <h5><i data-lucide="check-circle"></i> What We've Done Together</h5>
+              <ul>
+                <li><i data-lucide="globe"></i><div><strong>Corporate Travel Programme</strong><span>Designed and managed a full corporate travel programme for Marshalls' senior management team including annual trade trips to China, Dubai, and the UK for supplier sourcing.</span></div></li>
+                <li><i data-lucide="users"></i><div><strong>Staff Recruitment</strong><span>Assisted Marshalls in recruiting qualified retail managers, logistics officers, and customer service professionals to support their expansion into new regional branches.</span></div></li>
+                <li><i data-lucide="building-2"></i><div><strong>Team Incentive Travel</strong><span>Organised incentive and reward trips for top-performing Marshalls staff, covering leisure tours to popular regional destinations.</span></div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Constructions -->
+        <div class="affil-card">
+          <div class="affil-icon-wrap"><i data-lucide="hard-hat"></i></div>
+          <div class="affil-content">
+            <div class="affil-badge">Construction Partner</div>
+            <h3>Executive Constructions</h3>
+            <p class="affil-desc">A premier construction and civil engineering company delivering landmark projects across Ghana's infrastructure sector with a commitment to quality and innovation.</p>
+            <div class="affil-works">
+              <h5><i data-lucide="check-circle"></i> What We've Done Together</h5>
+              <ul>
+                <li><i data-lucide="globe"></i><div><strong>International Procurement Tours</strong><span>Coordinated procurement visits to China, Turkey, and Germany, enabling Executive Constructions leadership to evaluate suppliers and technology for major infrastructure projects.</span></div></li>
+                <li><i data-lucide="users"></i><div><strong>Skilled Labour Recruitment</strong><span>Recruited and placed specialised civil engineers, project managers, and site supervisors — including international professionals from South Africa and the UK.</span></div></li>
+                <li><i data-lucide="plane"></i><div><strong>Relocation Services</strong><span>Provided full relocation packages for incoming international engineers, covering visa processing, accommodation, and airport transfers for seamless onboarding.</span></div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Christian Chapel -->
+        <div class="affil-card">
+          <div class="affil-icon-wrap"><i data-lucide="heart"></i></div>
+          <div class="affil-content">
+            <div class="affil-badge">Faith &amp; Community Partner</div>
+            <h3>Executive Christian Chapel</h3>
+            <p class="affil-desc">A vibrant faith community dedicated to spiritual growth, community development, and outreach programmes that transform lives across Ghana and beyond.</p>
+            <div class="affil-works">
+              <h5><i data-lucide="check-circle"></i> What We've Done Together</h5>
+              <ul>
+                <li><i data-lucide="globe"></i><div><strong>Pilgrimage &amp; Mission Travel</strong><span>Managed group travel for 120+ members of the congregation on mission trips to Israel, South Africa, and Nigeria — covering flights, visas, accommodation, and guided itineraries.</span></div></li>
+                <li><i data-lucide="users"></i><div><strong>Conference Travel</strong><span>Coordinated travel logistics for the chapel's annual interdenominational leadership conference, facilitating the attendance of guest speakers and delegates from across West Africa and the diaspora.</span></div></li>
+                <li><i data-lucide="plane"></i><div><strong>Youth Outreach Tours</strong><span>Organised cross-border youth tours to neighbouring countries as part of the chapel's community outreach and cultural exchange initiatives.</span></div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ATCCU -->
+        <div class="affil-card">
+          <div class="affil-icon-wrap"><i data-lucide="landmark"></i></div>
+          <div class="affil-content">
+            <div class="affil-badge">Finance &amp; Cooperative Partner</div>
+            <h3>Associated Teachers Cooperative Credit Union (ATCCU)</h3>
+            <p class="affil-desc">A dedicated credit union serving Ghana's teaching profession, providing financial services, savings schemes, and investment opportunities to educators nationwide.</p>
+            <div class="affil-works">
+              <h5><i data-lucide="check-circle"></i> What We've Done Together</h5>
+              <ul>
+                <li><i data-lucide="plane"></i><div><strong>Member Travel Benefit Packages</strong><span>Developed exclusive travel packages and discounted holiday deals available to all ATCCU members — covering flights, hotels, and tour packages to domestic and international destinations.</span></div></li>
+                <li><i data-lucide="users"></i><div><strong>Leadership &amp; Governance Tours</strong><span>Facilitated educational and governance study tours for the ATCCU board and management to cooperatives in the UK, Canada, and South Africa, expanding their operational expertise.</span></div></li>
+                <li><i data-lucide="briefcase"></i><div><strong>Staff Capacity Building</strong><span>Assisted ATCCU in recruiting trained financial services professionals and organised capacity-building travel programmes to strengthen their administrative and member engagement teams.</span></div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive International School -->
+        <div class="affil-card">
+          <div class="affil-icon-wrap"><i data-lucide="school"></i></div>
+          <div class="affil-content">
+            <div class="affil-badge">Education Partner</div>
+            <h3>Executive International School</h3>
+            <p class="affil-desc">A distinguished international school committed to delivering world-class education that prepares students for global citizenship, leadership, and excellence.</p>
+            <div class="affil-works">
+              <h5><i data-lucide="check-circle"></i> What We've Done Together</h5>
+              <ul>
+                <li><i data-lucide="globe"></i><div><strong>Student Exchange Programmes</strong><span>Coordinated multi-country student exchange programmes sending Ghanaian students to partner schools in the United Kingdom, Germany, and Kenya — and hosting incoming students for immersive cultural learning.</span></div></li>
+                <li><i data-lucide="plane"></i><div><strong>Educational Tours</strong><span>Organised annual educational trips for students across different year groups to destinations including South Africa, Senegal, and the UAE, combining academic visits with cultural exploration.</span></div></li>
+                <li><i data-lucide="users"></i><div><strong>International Teacher Recruitment</strong><span>Assisted the school in recruiting qualified international teachers from the UK, USA, and Canada, managing the full process — from advertising to visa processing and relocation.</span></div></li>
+                <li><i data-lucide="briefcase"></i><div><strong>Staff Professional Development Travel</strong><span>Facilitated travel for teaching and administrative staff to attend international education conferences, IGCSE training programmes, and curriculum development workshops overseas.</span></div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- .affil-grid -->
+    </div>
+  </section>
+
+  <!-- GENERAL AFFILIATE PROGRAMME -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Join Our Network</span>
+        <h2>Individual &amp; Business <span class="text-blue">Affiliate Programme</span></h2>
+        <p>Beyond institutional partnerships, we invite individuals and businesses to earn by referring clients to Rwoyal Edge</p>
+      </div>
+      <div class="affiliate-intro">
+        <div class="affiliate-intro-text">
+          <h2>Earn by Referring &amp; <span class="text-blue">Partnering</span></h2>
+          <p>Join the Rwoyal Edge Affiliate Programme and turn your network into a revenue stream. Whether you're an individual, a business, or a professional community — our model rewards you generously for every successful referral.</p>
+          <p>We provide you with all the tools, support, and materials you need to represent our brand with confidence and integrity.</p>
+          <a href="#" class="btn-primary" onclick="showPage('contact')"><i data-lucide="user-plus"></i> Join Now</a>
+        </div>
+        <div class="affiliate-intro-image">
+          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80" alt="Affiliate"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Your Advantages</span>
+        <h2>Programme <span class="text-blue">Benefits</span></h2>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-item"><div class="ben-ic"><i data-lucide="circle-dollar-sign"></i></div><h4>Competitive Commissions</h4><p>Earn attractive commissions on every successful placement or travel booking through your referral.</p></div>
+        <div class="benefit-item"><div class="ben-ic"><i data-lucide="bar-chart-2"></i></div><h4>Real-Time Tracking</h4><p>Monitor your referrals, conversions, and earnings through our simple affiliate dashboard.</p></div>
+        <div class="benefit-item"><div class="ben-ic"><i data-lucide="gift"></i></div><h4>Performance Bonuses</h4><p>Hit milestones and unlock bonus rewards, exclusive incentives, and tier upgrades.</p></div>
+        <div class="benefit-item"><div class="ben-ic"><i data-lucide="megaphone"></i></div><h4>Marketing Support</h4><p>We provide branded materials, promotional content, and marketing assets at no cost to you.</p></div>
+        <div class="benefit-item"><div class="ben-ic"><i data-lucide="user-check"></i></div><h4>Dedicated Manager</h4><p>Every affiliate gets a dedicated relationship manager for personalised support and guidance.</p></div>
+        <div class="benefit-item"><div class="ben-ic"><i data-lucide="globe"></i></div><h4>Global Reach</h4><p>Leverage our worldwide network to open doors across multiple countries and industries.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header"><span class="section-tag">Simple Process</span><h2>How It <span class="text-blue">Works</span></h2></div>
+      <div class="how-steps">
+        <div class="how-step"><div class="how-num">1</div><h4>Sign Up</h4><p>Complete our affiliate registration form. Approval is quick — usually within 24 hours.</p></div>
+        <div class="how-step"><div class="how-num">2</div><h4>Get Your Link</h4><p>Receive your unique referral link and branded materials to start promoting immediately.</p></div>
+        <div class="how-step"><div class="how-num">3</div><h4>Refer &amp; Earn</h4><p>Share Rwoyal Edge with your network. Every successful conversion earns you a commission.</p></div>
+        <div class="how-step"><div class="how-num">4</div><h4>Get Paid</h4><p>Commissions are processed monthly via your preferred payment method — prompt and transparent.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container"><div class="cta-content">
+      <h2>Start Earning with Rwoyal Edge Today</h2>
+      <p>Join our growing community of affiliates and unlock a reliable income stream with a brand you can be proud of.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn-white" onclick="showPage('contact')"><i data-lucide="user-plus"></i> Apply Now</a>
+        <a href="#" class="btn-outline-white" onclick="showPage('contact')"><i data-lucide="message-circle"></i> Ask a Question</a>
+      </div>
+    </div></div>
+  </section>
+
+</div><!-- /affiliate -->
+
+<!-- =====================================================================  CONTACT  ===================================================================== -->
+<div id="page-contact" class="page">
+
+  <section class="page-hero page-hero-photo" style="background-image:url('https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1600&q=85')">
+    <div class="pho"></div>
+    <div class="container phc">
+      <nav class="breadcrumb"><a onclick="showPage('home')">Home</a><i data-lucide="chevron-right"></i><span>Contact</span></nav>
+      <span class="section-tag tag-white">Let's Talk</span>
+      <h1 class="hw">Get in <span class="ha">Touch</span></h1>
+      <p class="hs">We'd love to hear from you. Reach out and we'll respond within one business day.</p>
+      <div class="ph-stats">
+        <div class="phs"><strong>&lt;1 Day</strong><span>Response Time</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>Mon–Fri</strong><span>8:30 – 4:30</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>Saturday</strong><span>9:00 – 2:30</span></div><div class="phs-div"></div>
+        <div class="phs"><strong>Accra</strong><span>Ghana HQ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <div class="info-item"><span class="info-ic"><i data-lucide="map-pin"></i></span><div><strong>Address</strong><p>123 Independence Avenue, Accra, Ghana</p></div></div>
+          <div class="info-item"><span class="info-ic"><i data-lucide="phone"></i></span><div><strong>Phone</strong><p>+233 20 000 0000</p></div></div>
+          <div class="info-item"><span class="info-ic"><i data-lucide="mail"></i></span><div><strong>Email</strong><p>info@rwoyaledge.com</p></div></div>
+          <div class="info-item"><span class="info-ic"><i data-lucide="globe"></i></span><div><strong>Website</strong><p>www.rwoyaledge.com</p></div></div>
+          <div class="hours-card">
+            <h4><i data-lucide="clock" class="h-clk"></i> Business Hours</h4>
+            <ul class="hours-list">
+              <li><span>Monday – Friday</span><strong>8:30 AM – 4:30 PM</strong></li>
+              <li><span>Saturday</span><strong>9:00 AM – 2:30 PM</strong></li>
+              <li><span>Sunday</span><strong class="closed">Closed</strong></li>
+              <li><span>Public Holidays</span><strong class="closed">Closed</strong></li>
+            </ul>
+          </div>
+          <div class="social-row">
+            <a href="https://linkedin.com" target="_blank" class="social-btn linkedin-btn" title="LinkedIn"><i data-lucide="linkedin"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-btn twitter-btn" title="X / Twitter"><i data-lucide="twitter"></i></a>
+            <a href="https://facebook.com" target="_blank" class="social-btn facebook-btn" title="Facebook"><i data-lucide="facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-btn instagram-btn" title="Instagram"><i data-lucide="instagram"></i></a>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <h3>Send Us a Message</h3>
+          <form class="contact-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-row">
+              <div class="form-group"><label>Full Name *</label><input type="text" placeholder="John Doe" required/></div>
+              <div class="form-group"><label>Email Address *</label><input type="email" placeholder="john@example.com" required/></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+233 00 000 0000"/></div>
+              <div class="form-group">
+                <label>Service of Interest</label>
+                <select><option value="">Select a service...</option><option>Global Recruitment</option><option>Travel Planning</option><option>Visa Assistance</option><option>Career Coaching</option><option>Accommodation</option><option>Affiliate Programme</option><option>Other</option></select>
+              </div>
+            </div>
+            <div class="form-group"><label>Message *</label><textarea rows="5" placeholder="Tell us how we can help you..." required></textarea></div>
+            <button type="submit" class="btn-primary btn-full"><i data-lucide="send"></i> Send Message</button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <i data-lucide="check-circle" class="form-ok-ic"></i>
+            <h4>Message Sent!</h4>
+            <p>Thank you for reaching out. We'll get back to you within one business day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section map-section">
+    <div class="container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127359.13455001!2d-0.2732!3d5.5502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9084b2b7a773%3A0xbed14ed8650e2dd3!2sAccra%2C%20Ghana!5e0!3m2!1sen!2sgh!4v1680000000000"
+        width="100%" height="380" style="border:0;border-radius:16px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+</div><!-- /contact -->
+
+<!-- =====================================================================  FOOTER  ===================================================================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo footer-logo-link" onclick="showPage('home')">
+          <img src="logo.png" alt="Rwoyal Edge" class="nav-logo-img footer-logo-img"/>
+          <span class="logo-text">RWOYAL <span class="logo-accent">EDGE</span></span>
+        </a>
+        <p>Your trusted partner in global recruitment and premium travel experiences. Connecting talent and destinations worldwide.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com" target="_blank" title="LinkedIn" class="fs-linkedin"><i data-lucide="linkedin"></i></a>
+          <a href="https://twitter.com" target="_blank" title="Twitter" class="fs-twitter"><i data-lucide="twitter"></i></a>
+          <a href="https://facebook.com" target="_blank" title="Facebook" class="fs-facebook"><i data-lucide="facebook"></i></a>
+          <a href="https://instagram.com" target="_blank" title="Instagram" class="fs-instagram"><i data-lucide="instagram"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#" onclick="showPage('home')">Home</a></li>
+          <li><a href="#" onclick="showPage('about')">About Us</a></li>
+          <li><a href="#" onclick="showPage('services')">Services</a></li>
+          <li><a href="#" onclick="showPage('gallery')">Gallery</a></li>
+          <li><a href="#" onclick="showPage('affiliate')">Affiliate</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#">Global Recruitment</a></li>
+          <li><a href="#">Travel Planning</a></li>
+          <li><a href="#">Visa Assistance</a></li>
+          <li><a href="#">Career Coaching</a></li>
+          <li><a href="#">Travel Insurance</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h5>Get in Touch</h5>
+        <p><i data-lucide="map-pin" class="ft-ic"></i> Accra, Ghana</p>
+        <p><i data-lucide="phone" class="ft-ic"></i> +233 20 000 0000</p>
+        <p><i data-lucide="mail" class="ft-ic"></i> info@rwoyaledge.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Rwoyal Edge. All rights reserved.</p>
+      <p>Designed with care &amp; excellence</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
