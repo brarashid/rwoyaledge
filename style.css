@@ -59,16 +59,8 @@ p{color:var(--grey);line-height:1.8}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 /* ================================================================ HOME HERO ================================================================ */
-.hero{
-min-height:calc(100vh - 70px);
-position:relative;
-display:flex;
-align-items:center;
-background-position:center;
-background-size:cover;
-background-repeat:no-repeat;
-overflow:hidden;
-}.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,30,60,.88) 0%,rgba(0,80,130,.68) 55%,rgba(0,20,45,.82) 100%)}
+.hero{min-height:calc(100vh - 70px);position:relative;display:flex;align-items:center;background:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80') center/cover no-repeat;overflow:hidden}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,30,60,.88) 0%,rgba(0,80,130,.68) 55%,rgba(0,20,45,.82) 100%)}
 .hero-content{max-width:1200px;margin:0 auto;padding:60px 24px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;position:relative;z-index:2}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);color:#fff;padding:8px 18px;border-radius:50px;font-size:.85rem;font-weight:700;letter-spacing:.04em;margin-bottom:20px;border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(4px)}
 .badge-ic{width:16px;height:16px}
