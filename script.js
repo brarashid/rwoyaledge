@@ -104,3 +104,50 @@ window.addEventListener('load', function () {
   showPage('home');
   initReveal();
 });
+
+function switchBookTab(tab, btn) {
+  document.querySelectorAll(".b-pane").forEach(p => p.classList.remove("b-pane--active"));
+  document.querySelectorAll(".b-tab").forEach(b => b.classList.remove("b-tab--active"));
+
+  document.getElementById("pane-" + tab).classList.add("b-pane--active");
+  btn.classList.add("b-tab--active");
+}
+
+function handleBook(type) {
+
+  let message = "";
+
+  if (type === "flight") {
+    const from = document.getElementById("f-from").value;
+    const to = document.getElementById("f-to").value;
+    const depart = document.getElementById("f-depart").value;
+    const ret = document.getElementById("f-return").value;
+
+    message =
+`Hello, I want to book a FLIGHT:
+From: ${from}
+To: ${to}
+Depart: ${depart}
+Return: ${ret}`;
+  }
+
+  if (type === "hotel") {
+    message =
+`Hello, I want to book a HOTEL.
+Please assist me with availability and pricing.`;
+  }
+
+  if (type === "car") {
+    message =
+`Hello, I want to book a CAR RENTAL.
+Please send available options and prices.`;
+  }
+
+  const phone = "233553743479"; // CHANGE THIS TO YOUR NUMBER
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+  window.open(url, "_blank");
+}
+function closeToast() {
+  document.getElementById("bToast").style.display = "none";
+}
