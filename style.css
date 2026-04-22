@@ -906,7 +906,21 @@ p{color:var(--grey);line-height:1.8}
   padding: 90px 0;
 }
 
+.cal-tz-section .section-tag{
+  color: #ffffff;
+}
 
+.cal-tz-section h2{
+  color: #0077ff;   /* Global = Blue */
+}
+
+.cal-tz-section h2 .text-blue{
+  color: #ffffff;   /* Calendar & World Clocks = White */
+}
+
+.cal-tz-section p{
+  color: #ffffff;
+}
 
 
 
