@@ -1100,6 +1100,17 @@ function openLightbox(img){
 function closeLightbox(){
   document.getElementById("imgLightbox").style.display = "none";
 }
+function openLightbox(img){
+  const lightbox = document.getElementById("imgLightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+
+  lightbox.style.display = "flex";
+  lightboxImg.src = img.src;
+}
+
+function closeLightbox(){
+  document.getElementById("imgLightbox").style.display = "none";
+}
 
 
 
