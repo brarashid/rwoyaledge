@@ -922,6 +922,118 @@ p{color:var(--grey);line-height:1.8}
   color: #ffffff;
 }
 
+/* ===== WORLD TOURIST ATTRACTIONS ===== */
+.attractions-section{
+  padding:90px 0;
+  background:#f8fbff;
+}
+
+.attractions-section .section-header{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 50px;
+}
+
+.attractions-section .section-tag{
+  display:inline-block;
+  padding:8px 16px;
+  background:#0077ff;
+  color:#fff;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:15px;
+}
+
+.attractions-section h2{
+  font-size:42px;
+  line-height:1.2;
+  margin-bottom:15px;
+  color:#111;
+  font-weight:800;
+}
+
+.attractions-section .text-blue{
+  color:#0077ff;
+}
+
+.attractions-section p{
+  color:#555;
+  font-size:17px;
+  line-height:1.7;
+}
+
+/* GRID */
+.attractions-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:28px;
+}
+
+/* CARD */
+.attr-card{
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  transition:all .35s ease;
+}
+
+.attr-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 40px rgba(0,119,255,.18);
+}
+
+.attr-card img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  display:block;
+}
+
+.attr-content{
+  padding:24px;
+}
+
+.attr-content h3{
+  font-size:22px;
+  margin-bottom:12px;
+  color:#111;
+  font-weight:800;
+}
+
+.attr-content p{
+  font-size:15px;
+  color:#666;
+  line-height:1.8;
+  margin:0;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+  .attractions-section{
+    padding:70px 0;
+  }
+
+  .attractions-section h2{
+    font-size:32px;
+  }
+
+  .attr-card img{
+    height:210px;
+  }
+
+  .attr-content{
+    padding:20px;
+  }
+
+  .attr-content h3{
+    font-size:20px;
+  }
+
+}
+
 
 
 
