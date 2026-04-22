@@ -157,7 +157,7 @@ function closeToast() {
    - Covers 30+ countries with full year holidays
    - World clocks update every second using Intl.DateTimeFormat
 ================================================================ */
- 
+
 // ── HARDCODED PUBLIC HOLIDAYS DATABASE ─────────────────────────────────────
 // Format: "MM-DD": "Holiday Name"
 // For Easter-based holidays, computed dynamically for current year
@@ -721,7 +721,7 @@ const HOLIDAY_DB = {
     ]
   }
 };
- 
+
 // ── HELPER: EASTER CALCULATION (Butcher's algorithm) ──────────────────────
 function getEaster(year) {
   const a = year % 19, b = Math.floor(year/100), c = year % 100;
@@ -734,14 +734,14 @@ function getEaster(year) {
   const day = ((h+l-7*m+114) % 31) + 1;
   return new Date(year, month-1, day);
 }
- 
+
 function addDays(date, n) {
   if (!date) return null;
   const d = new Date(date);
   d.setDate(d.getDate() + n);
   return d;
 }
- 
+
 // ── ISLAMIC HOLIDAYS (approximate, Gregorian estimate) ─────────────────────
 // Based on astronomical calculation; shifts ~11 days earlier each year
 function islamicToGregorian(islamicYear, islamicMonth, islamicDay) {
@@ -749,7 +749,7 @@ function islamicToGregorian(islamicYear, islamicMonth, islamicDay) {
   // Reference: 1 Muharram 1446 = July 7, 2024
   const refGreg = new Date(2024, 6, 7); // 1 Muharram 1446
   const refIslamic = { year: 1446, month: 1, day: 1 };
- 
+
   // Days from reference
   const yearsFromRef = islamicYear - refIslamic.year;
   const monthsFromRef = (islamicMonth - refIslamic.month) + yearsFromRef * 12;
@@ -758,7 +758,7 @@ function islamicToGregorian(islamicYear, islamicMonth, islamicDay) {
   result.setDate(result.getDate() + Math.round(daysFromRef));
   return result;
 }
- 
+
 function eidAlFitr(year) {
   // 1 Shawwal — Ramadan ends on 29/30 of 9th month
   // Rough calculation based on known dates + drift
@@ -768,7 +768,7 @@ function eidAlFitr(year) {
   d.setDate(d.getDate() - Math.round(diff * 10.875));
   return d;
 }
- 
+
 function eidAlAdha(year) {
   const known = new Date(2024, 5, 17); // Eid al-Adha 2024: Jun 17
   const diff = year - 2024;
@@ -776,7 +776,7 @@ function eidAlAdha(year) {
   d.setDate(d.getDate() - Math.round(diff * 10.875));
   return d;
 }
- 
+
 function islamicNewYear(year) {
   const known = new Date(2024, 6, 7);
   const diff = year - 2024;
@@ -784,7 +784,7 @@ function islamicNewYear(year) {
   d.setDate(d.getDate() - Math.round(diff * 10.875));
   return d;
 }
- 
+
 function prophetBirthday(year) {
   const known = new Date(2024, 8, 15); // Mawlid 2024: Sep 15
   const diff = year - 2024;
@@ -792,7 +792,7 @@ function prophetBirthday(year) {
   d.setDate(d.getDate() - Math.round(diff * 10.875));
   return d;
 }
- 
+
 // ── HELPER: nth weekday of a month ────────────────────────────────────────
 function nthWeekday(year, month, weekday, n, last=false) {
   // month: 1-based; weekday: 0=Sun,1=Mon...6=Sat; n: 1st,2nd,3rd,4th
@@ -806,24 +806,24 @@ function nthWeekday(year, month, weekday, n, last=false) {
   const diff = (weekday - first.getDay() + 7) % 7;
   return new Date(year, month-1, 1 + diff + (n-1)*7);
 }
- 
+
 // ── BUILD HOLIDAY MAP FOR A YEAR ─────────────────────────────────────────
 function buildHolidayMap(countryCode, year) {
   const country = HOLIDAY_DB[countryCode];
   if (!country) return {};
- 
+
   const map = {}; // "YYYY-MM-DD" → name
- 
+
   const pad = (n) => String(n).padStart(2,'0');
   const fmt = (d) => d ? `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}` : null;
- 
+
   // Fixed holidays
   if (country.fixed) {
     for (const [mmdd, name] of Object.entries(country.fixed)) {
       map[`${year}-${mmdd}`] = name;
     }
   }
- 
+
   // Easter-based
   if (country.easter) {
     const easter = getEaster(year);
@@ -833,7 +833,7 @@ function buildHolidayMap(countryCode, year) {
       if (k) map[k] = name;
     }
   }
- 
+
   // Computed (nth weekday etc.)
   if (country.computed) {
     const items = country.computed(year);
@@ -841,7 +841,7 @@ function buildHolidayMap(countryCode, year) {
       if (date) { const k = fmt(date); if (k) map[k] = name; }
     }
   }
- 
+
   // Variable (Islamic, etc.)
   if (country.variable) {
     const items = country.variable(year);
@@ -849,15 +849,15 @@ function buildHolidayMap(countryCode, year) {
       if (date) { const k = fmt(date); if (k) map[k] = name; }
     }
   }
- 
+
   return map;
 }
- 
+
 // ── CALENDAR STATE ────────────────────────────────────────────────────────
 let calYear  = new Date().getFullYear();
 let calMonth = new Date().getMonth(); // 0-based
 let calHolidayMap = {};
- 
+
 function loadHolidays() {
   const cc = document.getElementById('calCountrySelect')?.value || 'GH';
   // Load holidays for current year AND next year (for upcoming list)
@@ -868,7 +868,7 @@ function loadHolidays() {
   renderCalendar();
   renderHolidayList();
 }
- 
+
 function changeCalMonth(delta) {
   calMonth += delta;
   if (calMonth > 11) { calMonth = 0; calYear++; }
@@ -882,30 +882,30 @@ function changeCalMonth(delta) {
   renderCalendar();
   renderHolidayList();
 }
- 
+
 function renderCalendar() {
   const el = document.getElementById('calDays');
   const lbl = document.getElementById('calMonthLabel');
   if (!el || !lbl) return;
- 
+
   const monthNames = ['January','February','March','April','May','June',
     'July','August','September','October','November','December'];
   lbl.textContent = `${monthNames[calMonth]} ${calYear}`;
- 
+
   const today = new Date();
   const todayStr = fmtDate(today);
- 
+
   const firstDay = new Date(calYear, calMonth, 1).getDay();
   const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
   const prevDays = new Date(calYear, calMonth, 0).getDate();
- 
+
   let html = '';
- 
+
   // Previous month padding
   for (let i = firstDay - 1; i >= 0; i--) {
     html += `<div class="cal-day cal-day-empty cal-day-other-month">${prevDays - i}</div>`;
   }
- 
+
   // Current month days
   for (let d = 1; d <= daysInMonth; d++) {
     const dateStr = `${calYear}-${pad2(calMonth+1)}-${pad2(d)}`;
@@ -913,61 +913,61 @@ function renderCalendar() {
     const isToday   = dateStr === todayStr;
     const isHoliday = !!calHolidayMap[dateStr];
     const isWeekend = dow === 0 || dow === 6;
- 
+
     let cls = 'cal-day';
     if (isToday)   cls += ' cal-day-today';
     else if (isHoliday) cls += ' cal-day-holiday';
     else if (isWeekend) cls += ' cal-day-weekend';
- 
+
     const title = isHoliday ? `title="${calHolidayMap[dateStr]}"` : '';
     html += `<div class="${cls}" ${title}>${d}</div>`;
   }
- 
+
   // Next month padding to complete the grid
   const totalCells = firstDay + daysInMonth;
   const remaining = 7 - (totalCells % 7 === 0 ? 7 : totalCells % 7);
   for (let d = 1; d <= remaining && remaining < 7; d++) {
     html += `<div class="cal-day cal-day-empty cal-day-other-month">${d}</div>`;
   }
- 
+
   el.innerHTML = html;
 }
- 
+
 function renderHolidayList() {
   const el    = document.getElementById('calHolidaysList');
   const title = document.getElementById('calHolidaysTitle');
   const cc    = document.getElementById('calCountrySelect')?.value || 'GH';
   const ctry  = HOLIDAY_DB[cc];
   if (!el) return;
- 
+
   if (title) title.textContent = `Public Holidays — ${ctry?.name || cc}`;
- 
+
   const today   = new Date(); today.setHours(0,0,0,0);
   const todayStr = fmtDate(today);
- 
+
   // Gather all holidays from map, sort them
   const entries = Object.entries(calHolidayMap)
     .map(([d, name]) => ({ dateStr: d, date: new Date(d), name }))
     .filter(h => !isNaN(h.date))
     .sort((a,b) => a.date - b.date);
- 
+
   if (entries.length === 0) {
     el.innerHTML = `<div class="cal-empty-msg">No holiday data available for this country.</div>`;
     return;
   }
- 
+
   // Show upcoming 12 months
   const cutoff = new Date(today);
   cutoff.setMonth(cutoff.getMonth() + 13);
- 
+
   const upcoming = entries.filter(h => h.date >= today && h.date < cutoff);
   const past     = entries.filter(h => h.date < today).slice(-3).reverse();
- 
+
   const all = [...upcoming.slice(0, 15), ...past];
- 
+
   const monthNames = ['Jan','Feb','Mar','Apr','May','Jun',
     'Jul','Aug','Sep','Oct','Nov','Dec'];
- 
+
   let html = '';
   for (const {dateStr, date, name} of all) {
     const isPast   = date < today;
@@ -984,15 +984,15 @@ function renderHolidayList() {
         </div>
       </div>`;
   }
- 
+
   el.innerHTML = html || `<div class="cal-empty-msg">No upcoming holidays found.</div>`;
 }
- 
+
 function pad2(n) { return String(n).padStart(2,'0'); }
 function fmtDate(d) {
   return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
 }
- 
+
 // ── WORLD CLOCKS ─────────────────────────────────────────────────────────
 const TIMEZONES = [
   { flag:'🇬🇭', city:'Accra',         country:'Ghana',           tz:'Africa/Accra',         offset:'GMT+0'  },
@@ -1018,7 +1018,7 @@ const TIMEZONES = [
   { flag:'🇪🇹', city:'Addis Ababa',   country:'Ethiopia',        tz:'Africa/Addis_Ababa',   offset:'GMT+3'  },
   { flag:'🇸🇳', city:'Dakar',         country:'Senegal',         tz:'Africa/Dakar',         offset:'GMT+0'  },
 ];
- 
+
 function buildWorldClocks() {
   const grid = document.getElementById('tzGrid');
   if (!grid) return;
@@ -1034,12 +1034,12 @@ function buildWorldClocks() {
     </div>`
   ).join('');
 }
- 
+
 function updateClocks() {
   const now = new Date();
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
- 
+
   TIMEZONES.forEach((tz, i) => {
     try {
       const timeStr = new Intl.DateTimeFormat('en-GB', {
@@ -1047,23 +1047,23 @@ function updateClocks() {
         hour: '2-digit', minute: '2-digit', second: '2-digit',
         hour12: false
       }).format(now);
- 
+
       const dateObj = new Intl.DateTimeFormat('en-GB', {
         timeZone: tz.tz,
         weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
       }).formatToParts(now);
- 
+
       const parts = {};
       dateObj.forEach(p => { parts[p.type] = p.value; });
       const dateStr = `${parts.weekday}, ${parts.day} ${parts.month} ${parts.year}`;
- 
+
       // Day/night based on local hour
       const hourStr = new Intl.DateTimeFormat('en-GB', {
         timeZone: tz.tz, hour: 'numeric', hour12: false
       }).format(now);
       const hr = parseInt(hourStr);
       const isDay = hr >= 6 && hr < 20;
- 
+
       const tEl = document.getElementById(`tztime-${i}`);
       const dEl = document.getElementById(`tzdate-${i}`);
       const dnEl = document.getElementById(`tzdn-${i}`);
@@ -1077,7 +1077,7 @@ function updateClocks() {
   // Reinit lucide for sun/moon icons
   if (window.lucide) lucide.createIcons();
 }
- 
+
 // ── INIT CALENDAR & CLOCKS ────────────────────────────────────────────────
 function initCalendarAndClocks() {
   buildWorldClocks();
@@ -1085,40 +1085,9 @@ function initCalendarAndClocks() {
   updateClocks();
   setInterval(updateClocks, 1000);
 }
- 
+
 // Hook into the existing load handler
 const _origLoad = window.onload;
 window.addEventListener('load', function() {
   initCalendarAndClocks();
 });
- 
-function openLightbox(img){
-  document.getElementById("imgLightbox").style.display = "flex";
-  document.getElementById("lightboxImg").src = img.src;
-}
-
-function closeLightbox(){
-  document.getElementById("imgLightbox").style.display = "none";
-}
-function openLightbox(img){
-  const lightbox = document.getElementById("imgLightbox");
-  const lightboxImg = document.getElementById("lightboxImg");
-
-  lightbox.style.display = "flex";
-  lightboxImg.src = img.src;
-}
-
-function closeLightbox(){
-  document.getElementById("imgLightbox").style.display = "none";
-}
-
-
-
-
-
-
-
-
-
-
-
