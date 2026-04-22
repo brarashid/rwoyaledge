@@ -899,7 +899,12 @@ p{color:var(--grey);line-height:1.8}
   .tz-card:nth-child(even) { border-right: none; }
   .cal-day { font-size: .75rem; min-height: 30px; }
 }
- 
+ .cal-tz-section{
+  position: relative;
+  background: linear-gradient(rgba(7,25,51,.72), rgba(7,25,51,.72)),
+              url("images/calender-sec.jpg") center/cover no-repeat fixed;
+  padding: 90px 0;
+}
 
 
 
