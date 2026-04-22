@@ -592,18 +592,19 @@ p{color:var(--grey);line-height:1.8}
   .team-socials{gap:6px}
   .ts-btn{width:30px;height:30px}
 }
+
 /* ================================================================
    CALENDAR & WORLD CLOCKS
 ================================================================ */
 .cal-tz-section { background: var(--bg-lt); padding: 96px 0; }
- 
+
 .cal-tz-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
   align-items: start;
 }
- 
+
 /* ── CALENDAR PANEL ── */
 .cal-panel {
   background: #fff;
@@ -612,7 +613,7 @@ p{color:var(--grey);line-height:1.8}
   border: 1px solid rgba(0,119,182,.1);
   overflow: hidden;
 }
- 
+
 .cal-top-bar {
   background: var(--blue);
   padding: 20px 24px 16px;
@@ -620,7 +621,7 @@ p{color:var(--grey);line-height:1.8}
   flex-direction: column;
   gap: 12px;
 }
- 
+
 .cal-country-row label {
   display: flex;
   align-items: center;
@@ -648,7 +649,7 @@ p{color:var(--grey);line-height:1.8}
   backdrop-filter: blur(4px);
 }
 .cal-country-row select option { background: #0077B6; color: #fff; }
- 
+
 .cal-nav-row {
   display: flex;
   align-items: center;
@@ -672,7 +673,7 @@ p{color:var(--grey);line-height:1.8}
 }
 .cal-nav-btn:hover { background: rgba(255,255,255,.35); }
 .cal-nav-btn [data-lucide] { width: 16px; height: 16px; }
- 
+
 /* Day-of-week headers */
 .cal-grid-wrap { padding: 16px 20px 8px; }
 .cal-dow-row {
@@ -689,7 +690,7 @@ p{color:var(--grey);line-height:1.8}
   letter-spacing: .05em;
   padding: 4px 0;
 }
- 
+
 /* Calendar day cells */
 .cal-days {
   display: grid;
@@ -736,7 +737,7 @@ p{color:var(--grey);line-height:1.8}
 .cal-day-weekend { color: #ef4444; }
 .cal-day-today.cal-day-holiday { background: var(--blue) !important; color: #fff !important; }
 .cal-day-other-month { color: #ccc; }
- 
+
 /* Legend */
 .cal-legend {
   display: flex;
@@ -750,7 +751,7 @@ p{color:var(--grey);line-height:1.8}
 .cal-dot-today    { background: var(--blue); }
 .cal-dot-holiday  { background: #d97706; }
 .cal-dot-weekend  { background: #ef4444; }
- 
+
 /* Holidays list */
 .cal-holidays-list {
   padding: 16px 20px 20px;
@@ -793,7 +794,7 @@ p{color:var(--grey);line-height:1.8}
 .cal-h-today-badge {
   font-size: .68rem;
   background: var(--blue);
-  color: #ffffff;
+  color: #fff;
   padding: 2px 6px;
   border-radius: 4px;
   font-weight: 700;
@@ -805,12 +806,12 @@ p{color:var(--grey);line-height:1.8}
   font-size: .88rem;
   padding: 16px 0;
 }
- 
+
 /* Scrollbar styling */
 .cal-holidays-list::-webkit-scrollbar { width: 4px; }
 .cal-holidays-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
 .cal-holidays-list::-webkit-scrollbar-thumb { background: var(--blue-lt); border-radius: 4px; }
- 
+
 /* ── TIMEZONE PANEL ── */
 .tz-panel {
   background: #fff;
@@ -834,13 +835,13 @@ p{color:var(--grey);line-height:1.8}
 }
 .tz-header [data-lucide] { width: 18px; height: 18px; }
 .tz-header p { color: rgba(255,255,255,.7); font-size: .82rem; }
- 
+
 .tz-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
 }
- 
+
 .tz-card {
   padding: 16px 18px;
   border-bottom: 1px solid rgba(0,119,182,.07);
@@ -850,7 +851,7 @@ p{color:var(--grey);line-height:1.8}
 }
 .tz-card:hover { background: rgba(0,119,182,.03); }
 .tz-card:nth-child(even) { border-right: none; }
- 
+
 .tz-flag { font-size: 1.3rem; margin-bottom: 4px; display: block; }
 .tz-city { font-size: .78rem; font-weight: 800; color: var(--black); text-transform: uppercase; letter-spacing: .04em; }
 .tz-country { font-size: .7rem; color: var(--grey); margin-bottom: 6px; }
@@ -873,7 +874,7 @@ p{color:var(--grey);line-height:1.8}
   font-weight: 700;
   margin-top: 4px;
 }
- 
+
 /* Day/Night indicator */
 .tz-daynight {
   display: flex;
@@ -885,7 +886,7 @@ p{color:var(--grey);line-height:1.8}
 }
 .tz-sun { color: #f59e0b; }
 .tz-moon { color: #6366f1; }
- 
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .cal-tz-wrapper { grid-template-columns: 1fr; }
@@ -899,173 +900,3 @@ p{color:var(--grey);line-height:1.8}
   .tz-card:nth-child(even) { border-right: none; }
   .cal-day { font-size: .75rem; min-height: 30px; }
 }
- .cal-tz-section{
-  position: relative;
-  background: linear-gradient(rgba(7,25,51,.72), rgba(7,25,51,.72)),
-              url("images/calender-sec.jpg") center/cover no-repeat fixed;
-  padding: 90px 0;
-}
-
-.cal-tz-section .section-tag{
-  color: #ffffff;
-}
-
-.cal-tz-section h2{
-  color: #0077ff;   /* Global = Blue */
-}
-
-.cal-tz-section h2 .text-blue{
-  color: #ffffff;   /* Calendar & World Clocks = White */
-}
-
-.cal-tz-section p{
-  color: #ffffff;
-}
-
-/* ===== TOURIST SECTION UNDER CALENDAR ===== */
-
-.tour-under-cal{
-  margin-top: 24px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 18px;
-  padding: 22px;
-  backdrop-filter: blur(10px);
-}
-
-.mini-head{
-  margin-bottom: 18px;
-}
-
-.mini-head h3{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 22px;
-  font-weight: 800;
-  color: #ffffff;
-  margin: 0 0 6px;
-}
-
-.mini-head h3 i{
-  width: 20px;
-  height: 20px;
-  color: #00bfff;
-}
-
-.mini-head p{
-  margin: 0;
-  color: rgba(255,255,255,0.78);
-  font-size: 14px;
-}
-
-/* cards */
-.tour-cards{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-
-.tour-card{
-  display: flex;
-  gap: 14px;
-  align-items: stretch;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: 0.3s ease;
-}
-
-.tour-card:hover{
-  transform: translateY(-4px);
-  border-color: rgba(0,191,255,0.45);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
-}
-
-.tour-card img{
-  width: 150px;
-  min-width: 150px;
-  height: 120px;
-  object-fit: cover;
-}
-
-.tour-info{
-  padding: 14px 14px 14px 0;
-}
-
-.tour-info h4{
-  margin: 0 0 8px;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 800;
-}
-
-.tour-info p{
-  margin: 0;
-  color: rgba(255,255,255,0.82);
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-/* responsive */
-@media (max-width: 768px){
-
-  .tour-card{
-    flex-direction: column;
-  }
-
-  .tour-card img{
-    width: 100%;
-    height: 220px;
-  }
-
-  .tour-info{
-    padding: 16px;
-  }
-
-  .mini-head h3{
-    font-size: 20px;
-  }
-}
-.tour-card img{
-  width: 180px;       /* increased size */
-  min-width: 180px;
-  height: 140px;
-  object-fit: cover;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.tour-card img:hover{
-  transform: scale(1.05);
-}
-.lightbox{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.lightbox img{
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-}
-
-
-
-
-
-
-
-
-
-
