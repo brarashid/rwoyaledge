@@ -144,164 +144,118 @@
   </section>
 
   <!-- ===== GLOBAL CALENDAR & WORLD CLOCKS ===== -->
-  <section class="section cal-tz-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Travel Essentials</span>
-        <h2>Global <span class="text-blue">Calendar &amp; World Clocks</span></h2>
-        <p>Browse public holidays for any country and track live times across major destinations worldwide</p>
-      </div>
- 
-      <div class="cal-tz-wrapper">
- 
-        <!-- ===== LEFT: CALENDAR ===== -->
+<section class="section cal-tz-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-tag">Travel Essentials</span>
+      <h2>Global <span class="text-blue">Calendar &amp; World Clocks</span></h2>
+      <p>Browse public holidays for any country and track live times across major destinations worldwide</p>
+    </div>
+
+    <div class="cal-tz-wrapper">
+
+      <!-- ===== LEFT COLUMN ===== -->
+      <div class="cal-left-column">
+
+        <!-- ===== CALENDAR ===== -->
         <div class="cal-panel">
           <div class="cal-top-bar">
             <div class="cal-country-row">
               <label for="calCountrySelect"><i data-lucide="map-pin" class="cal-lbl-ic"></i> Select Country</label>
               <select id="calCountrySelect" onchange="loadHolidays()">
                 <option value="GH">🇬🇭 Ghana</option>
-                <option value="NG">🇳🇬 Nigeria</option>
-                <option value="KE">🇰🇪 Kenya</option>
-                <option value="ZA">🇿🇦 South Africa</option>
                 <option value="US">🇺🇸 United States</option>
                 <option value="GB">🇬🇧 United Kingdom</option>
                 <option value="AE">🇦🇪 UAE</option>
-                <option value="DE">🇩🇪 Germany</option>
                 <option value="FR">🇫🇷 France</option>
-                <option value="CA">🇨🇦 Canada</option>
-                <option value="AU">🇦🇺 Australia</option>
-                <option value="IN">🇮🇳 India</option>
-                <option value="CN">🇨🇳 China</option>
-                <option value="JP">🇯🇵 Japan</option>
-                <option value="BR">🇧🇷 Brazil</option>
-                <option value="SG">🇸🇬 Singapore</option>
-                <option value="QA">🇶🇦 Qatar</option>
-                <option value="SA">🇸🇦 Saudi Arabia</option>
-                <option value="EG">🇪🇬 Egypt</option>
-                <option value="ET">🇪🇹 Ethiopia</option>
-                <option value="CI">🇨🇮 Côte d'Ivoire</option>
-                <option value="SN">🇸🇳 Senegal</option>
-                <option value="TZ">🇹🇿 Tanzania</option>
-                <option value="UG">🇺🇬 Uganda</option>
-                <option value="CM">🇨🇲 Cameroon</option>
-                <option value="RW">🇷🇼 Rwanda</option>
-                <option value="MU">🇲🇺 Mauritius</option>
-                <option value="IT">🇮🇹 Italy</option>
-                <option value="ES">🇪🇸 Spain</option>
-                <option value="NL">🇳🇱 Netherlands</option>
               </select>
             </div>
+
             <div class="cal-nav-row">
               <button class="cal-nav-btn" onclick="changeCalMonth(-1)"><i data-lucide="chevron-left"></i></button>
               <span class="cal-month-label" id="calMonthLabel">January 2025</span>
               <button class="cal-nav-btn" onclick="changeCalMonth(1)"><i data-lucide="chevron-right"></i></button>
             </div>
           </div>
-          
-          <!-- Calendar grid -->
+
           <div class="cal-grid-wrap">
             <div class="cal-dow-row">
               <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
             </div>
             <div class="cal-days" id="calDays"></div>
           </div>
- 
-          <!-- Legend -->
+
           <div class="cal-legend">
             <span class="cal-leg-item"><span class="cal-dot cal-dot-today"></span>Today</span>
             <span class="cal-leg-item"><span class="cal-dot cal-dot-holiday"></span>Public Holiday</span>
             <span class="cal-leg-item"><span class="cal-dot cal-dot-weekend"></span>Weekend</span>
           </div>
- 
-          <!-- Upcoming holidays list -->
+
           <div class="cal-holidays-list">
             <h4 id="calHolidaysTitle">Upcoming Public Holidays</h4>
             <div id="calHolidaysList" class="cal-hlist"></div>
           </div>
-        </div><!-- /cal-panel -->
- 
-        <!-- ===== RIGHT: WORLD CLOCKS ===== -->
-        <div class="tz-panel">
-          <div class="tz-header">
-            <h4><i data-lucide="clock"></i> Live World Clocks</h4>
-            <p>Times update every second</p>
+        </div>
+
+        <!-- ===== TOURIST SECTION DIRECTLY UNDER CALENDAR ===== -->
+        <div class="tour-under-cal">
+
+          <div class="mini-head">
+            <h3><i data-lucide="camera"></i> Top Tourist Attractions</h3>
+            <p>Popular destinations around the world</p>
           </div>
-          <div class="tz-grid" id="tzGrid">
-            <!-- Clocks injected by JS -->
+
+          <div class="tour-cards">
+
+            <div class="tour-card">
+              <img src="images/eiffel-tower.jpg" alt="Eiffel Tower">
+              <div class="tour-info">
+                <h4>🇫🇷 Eiffel Tower</h4>
+                <p>Built in 1889 in Paris, now one of the world’s most visited landmarks.</p>
+              </div>
+            </div>
+
+            <div class="tour-card">
+              <img src="images/pyramids.jpg" alt="Pyramids">
+              <div class="tour-info">
+                <h4>🇪🇬 Pyramids of Giza</h4>
+                <p>Ancient wonders built over 4,500 years ago in Egypt.</p>
+              </div>
+            </div>
+
+            <div class="tour-card">
+              <img src="images/burj-khalifa.jpg" alt="Burj Khalifa">
+              <div class="tour-info">
+                <h4>🇦🇪 Burj Khalifa</h4>
+                <p>The tallest building in the world, opened in Dubai in 2010.</p>
+              </div>
+            </div>
+
           </div>
         </div>
- 
-      </div><!-- /cal-tz-wrapper -->
-    </div>
-  </section>
-  <!-- ===== END CALENDAR ===== -->
 
-  <!-- ===== WORLD TOURIST ATTRACTIONS (HOME ONLY) ===== -->
-<section class="section attractions-section" id="world-attractions">
-  <div class="container">
+      </div><!-- /LEFT COLUMN -->
 
-    <div class="section-header">
-      <span class="section-tag">Explore the World</span>
-      <h2><span class="text-blue">Top Tourist</span> Attractions</h2>
-      <p>Discover some of the world’s most visited destinations with a brief history of each landmark.</p>
-    </div>
+      <!-- ===== RIGHT COLUMN: WORLD CLOCKS ===== -->
+      <div class="tz-panel">
+        <div class="tz-header">
+          <h4><i data-lucide="clock"></i> Live World Clocks</h4>
+          <p>Times update every second</p>
+        </div>
 
-    <div class="attractions-grid">
-
-      <div class="attr-card">
-        <img src="images/eiffel-tower.jpg" alt="Eiffel Tower">
-        <div class="attr-content">
-          <h3>🇫🇷 Eiffel Tower</h3>
-          <p>Completed in 1889 for the Paris World's Fair, it became one of the most iconic landmarks in Europe.</p>
+        <div class="tz-grid" id="tzGrid">
+          <!-- clocks injected -->
         </div>
       </div>
 
-      <div class="attr-card">
-        <img src="images/great-wall.jpg" alt="Great Wall of China">
-        <div class="attr-content">
-          <h3>🇨🇳 Great Wall of China</h3>
-          <p>Built over many centuries, the wall was created to defend ancient Chinese states.</p>
-        </div>
-      </div>
-
-      <div class="attr-card">
-        <img src="images/burj-khalifa.jpg" alt="Burj Khalifa">
-        <div class="attr-content">
-          <h3>🇦🇪 Burj Khalifa</h3>
-          <p>Opened in 2010, Burj Khalifa is the tallest building in the world and a symbol of Dubai.</p>
-        </div>
-      </div>
-
-      <div class="attr-card">
-        <img src="images/statue-liberty.jpg" alt="Statue of Liberty">
-        <div class="attr-content">
-          <h3>🇺🇸 Statue of Liberty</h3>
-          <p>Gifted by France in 1886, it stands as a symbol of freedom in New York Harbor.</p>
-        </div>
-      </div>
-
-      <div class="attr-card">
-        <img src="images/pyramids.jpg" alt="Pyramids of Giza">
-        <div class="attr-content">
-          <h3>🇪🇬 Pyramids of Giza</h3>
-          <p>Built over 4,500 years ago, these pyramids are among the greatest wonders of the ancient world.</p>
-        </div>
-      </div>
-
-      <div class="attr-card">
-        <img src="images/big-ben.jpg" alt="Big Ben">
-        <div class="attr-content">
-          <h3>🇬🇧 Big Ben</h3>
-          <p>Completed in 1859, Big Ben is one of London’s most famous historical landmarks.</p>
-        </div>
-      </div>
-
-    </div>
+    </div><!-- /cal-tz-wrapper -->
 
   </div>
 </section>
-<!-- ===== END WORLD TOURIST ATTRACTIONS ===== -->
+<!-- ===== END CALENDAR ===== -->
+
+  
  
 </div><!-- /home -->
 
