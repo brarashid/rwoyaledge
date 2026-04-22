@@ -1028,6 +1028,18 @@ p{color:var(--grey);line-height:1.8}
     font-size: 20px;
   }
 }
+.tour-card img{
+  width: 180px;       /* increased size */
+  min-width: 180px;
+  height: 140px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.tour-card img:hover{
+  transform: scale(1.05);
+}
 
 
 
