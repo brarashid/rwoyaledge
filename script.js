@@ -1092,7 +1092,14 @@ window.addEventListener('load', function() {
   initCalendarAndClocks();
 });
  
+function openLightbox(img){
+  document.getElementById("imgLightbox").style.display = "flex";
+  document.getElementById("lightboxImg").src = img.src;
+}
 
+function closeLightbox(){
+  document.getElementById("imgLightbox").style.display = "none";
+}
 
 
 
