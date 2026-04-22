@@ -143,6 +143,102 @@
     </div>
   </section>
 
+  <!-- ===== GLOBAL CALENDAR & WORLD CLOCKS ===== -->
+  <section class="section cal-tz-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Travel Essentials</span>
+        <h2>Global <span class="text-blue">Calendar &amp; World Clocks</span></h2>
+        <p>Browse public holidays for any country and track live times across major destinations worldwide</p>
+      </div>
+ 
+      <div class="cal-tz-wrapper">
+ 
+        <!-- ===== LEFT: CALENDAR ===== -->
+        <div class="cal-panel">
+          <div class="cal-top-bar">
+            <div class="cal-country-row">
+              <label for="calCountrySelect"><i data-lucide="map-pin" class="cal-lbl-ic"></i> Select Country</label>
+              <select id="calCountrySelect" onchange="loadHolidays()">
+                <option value="GH">🇬🇭 Ghana</option>
+                <option value="NG">🇳🇬 Nigeria</option>
+                <option value="KE">🇰🇪 Kenya</option>
+                <option value="ZA">🇿🇦 South Africa</option>
+                <option value="US">🇺🇸 United States</option>
+                <option value="GB">🇬🇧 United Kingdom</option>
+                <option value="AE">🇦🇪 UAE</option>
+                <option value="DE">🇩🇪 Germany</option>
+                <option value="FR">🇫🇷 France</option>
+                <option value="CA">🇨🇦 Canada</option>
+                <option value="AU">🇦🇺 Australia</option>
+                <option value="IN">🇮🇳 India</option>
+                <option value="CN">🇨🇳 China</option>
+                <option value="JP">🇯🇵 Japan</option>
+                <option value="BR">🇧🇷 Brazil</option>
+                <option value="SG">🇸🇬 Singapore</option>
+                <option value="QA">🇶🇦 Qatar</option>
+                <option value="SA">🇸🇦 Saudi Arabia</option>
+                <option value="EG">🇪🇬 Egypt</option>
+                <option value="ET">🇪🇹 Ethiopia</option>
+                <option value="CI">🇨🇮 Côte d'Ivoire</option>
+                <option value="SN">🇸🇳 Senegal</option>
+                <option value="TZ">🇹🇿 Tanzania</option>
+                <option value="UG">🇺🇬 Uganda</option>
+                <option value="CM">🇨🇲 Cameroon</option>
+                <option value="RW">🇷🇼 Rwanda</option>
+                <option value="MU">🇲🇺 Mauritius</option>
+                <option value="IT">🇮🇹 Italy</option>
+                <option value="ES">🇪🇸 Spain</option>
+                <option value="NL">🇳🇱 Netherlands</option>
+              </select>
+            </div>
+            <div class="cal-nav-row">
+              <button class="cal-nav-btn" onclick="changeCalMonth(-1)"><i data-lucide="chevron-left"></i></button>
+              <span class="cal-month-label" id="calMonthLabel">January 2025</span>
+              <button class="cal-nav-btn" onclick="changeCalMonth(1)"><i data-lucide="chevron-right"></i></button>
+            </div>
+          </div>
+ 
+          <!-- Calendar grid -->
+          <div class="cal-grid-wrap">
+            <div class="cal-dow-row">
+              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+            <div class="cal-days" id="calDays"></div>
+          </div>
+ 
+          <!-- Legend -->
+          <div class="cal-legend">
+            <span class="cal-leg-item"><span class="cal-dot cal-dot-today"></span>Today</span>
+            <span class="cal-leg-item"><span class="cal-dot cal-dot-holiday"></span>Public Holiday</span>
+            <span class="cal-leg-item"><span class="cal-dot cal-dot-weekend"></span>Weekend</span>
+          </div>
+ 
+          <!-- Upcoming holidays list -->
+          <div class="cal-holidays-list">
+            <h4 id="calHolidaysTitle">Upcoming Public Holidays</h4>
+            <div id="calHolidaysList" class="cal-hlist"></div>
+          </div>
+        </div><!-- /cal-panel -->
+ 
+        <!-- ===== RIGHT: WORLD CLOCKS ===== -->
+        <div class="tz-panel">
+          <div class="tz-header">
+            <h4><i data-lucide="clock"></i> Live World Clocks</h4>
+            <p>Times update every second</p>
+          </div>
+          <div class="tz-grid" id="tzGrid">
+            <!-- Clocks injected by JS -->
+          </div>
+        </div>
+ 
+      </div><!-- /cal-tz-wrapper -->
+    </div>
+  </section>
+  <!-- ===== END CALENDAR ===== -->
+ 
+</div><!-- /home -->
+
   <!-- CORE SERVICES -->
   <section class="section">
     <div class="container">
