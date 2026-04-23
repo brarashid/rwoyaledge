@@ -207,6 +207,96 @@
             <div class="cal-days" id="calDays"></div>
           </div>
 
+          <!-- ===== IMAGE LIGHTBOX ===== -->
+<div id="imgLightbox" class="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- ===== TOURIST SECTION DIRECTLY UNDER CALENDAR ===== -->
+<div class="tour-under-cal">
+
+  <div class="mini-head">
+    <h3><i data-lucide="camera"></i> Top Tourist Attractions</h3>
+    <p>Popular destinations around the world</p>
+  </div>
+
+  <div class="tour-cards">
+
+    <!-- FRANCE -->
+    <div class="tour-card">
+      <img src="images/eiffel-tower.jpg" alt="Eiffel Tower" onclick="openLightbox(this)">
+      <div class="tour-info">
+        <h4>🇫🇷 Eiffel Tower</h4>
+        <p>Built in 1889 in Paris, now one of the world’s most visited landmarks.</p>
+      </div>
+    </div>
+
+    <!-- EGYPT -->
+    <div class="tour-card">
+      <img src="images/pyramids.jpg" alt="Pyramids" onclick="openLightbox(this)">
+      <div class="tour-info">
+        <h4>🇪🇬 Pyramids of Giza</h4>
+        <p>Ancient wonders built over 4,500 years ago in Egypt.</p>
+      </div>
+    </div>
+
+    <!-- UAE -->
+    <div class="tour-card">
+      <img src="images/burj-khalifa.jpg" alt="Burj Khalifa" onclick="openLightbox(this)">
+      <div class="tour-info">
+        <h4>🇦🇪 Burj Khalifa</h4>
+        <p>The tallest building in the world, located in Dubai.</p>
+      </div>
+    </div>
+
+    <!-- GHANA -->
+    <div class="tour-card">
+      <img src="images/cape-coast-castle.jpg" alt="Cape Coast Castle" onclick="openLightbox(this)">
+      <div class="tour-info">
+        <h4>🇬🇭 Cape Coast Castle</h4>
+        <p>A historic UNESCO site linked to West Africa’s colonial history.</p>
+      </div>
+    </div>
+
+    <!-- NIGERIA -->
+    <div class="tour-card">
+      <img src="images/zuma-rock.jpg" alt="Zuma Rock" onclick="openLightbox(this)">
+      <div class="tour-info">
+        <h4>🇳🇬 Zuma Rock</h4>
+        <p>A massive natural monolith near Abuja known as the “Gateway to Abuja”.</p>
+      </div>
+    </div>
+
+    <!-- KENYA -->
+    <div class="tour-card">
+      <img src="images/maasai-mara.jpg" alt="Maasai Mara" onclick="openLightbox(this)">
+      <div class="tour-info">
+        <h4>🇰🇪 Maasai Mara</h4>
+        <p>Famous wildlife reserve known for the Great Migration.</p>
+      </div>
+    </div>
+
+    <!-- SOUTH AFRICA -->
+    <div class="tour-card">
+      <img src="images/table-mountain.jpg" alt="Table Mountain" onclick="openLightbox(this)">
+      <div class="tour-info">
+        <h4>🇿🇦 Table Mountain</h4>
+        <p>Iconic flat-topped mountain overlooking Cape Town.</p>
+      </div>
+    </div>
+
+    <!-- RWANDA -->
+    <div class="tour-card">
+      <img src="images/volcanoes-park.jpg" alt="Volcanoes National Park" onclick="openLightbox(this)">
+      <div class="tour-info">
+        <h4>🇷🇼 Volcanoes Park</h4>
+        <p>Home to rare mountain gorillas and volcanic landscapes.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
           <!-- Legend -->
           <div class="cal-legend">
             <span class="cal-leg-item"><span class="cal-dot cal-dot-today"></span>Today</span>
