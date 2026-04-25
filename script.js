@@ -1091,3 +1091,27 @@ const _origLoad = window.onload;
 window.addEventListener('load', function() {
   initCalendarAndClocks();
 });
+
+function openGallery(images){
+  const box = document.getElementById("galleryBox");
+  const main = document.getElementById("mainGalleryImg");
+  const thumbRow = document.getElementById("thumbRow");
+
+  box.style.display = "flex";
+  main.src = images[0];
+  thumbRow.innerHTML = "";
+
+  images.forEach(img => {
+    thumbRow.innerHTML += `
+      <img src="${img}" onclick="changeMainImage('${img}')">
+    `;
+  });
+}
+
+function changeMainImage(img){
+  document.getElementById("mainGalleryImg").src = img;
+}
+
+function closeGallery(){
+  document.getElementById("galleryBox").style.display = "none";
+}
