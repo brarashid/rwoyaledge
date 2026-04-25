@@ -143,339 +143,6 @@
     </div>
   </section>
 
-<!--  GLOBAL CALENDAR & WORLD CLOCKS  -->
-<section class="section cal-tz-section">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Travel Essentials</span>
-      <h2>Global <span class="text-blue">Calendar &amp; World Clocks</span></h2>
-      <p>Browse public holidays for any country and track live times across major destinations worldwide</p>
-    </div>
-
-    <div class="cal-tz-wrapper">
-
-      <!-- ===== LEFT SIDE ===== -->
-      <div class="left-side-wrap">
-
-        <!-- ===== CALENDAR ===== -->
-        <div class="cal-panel">
-          <div class="cal-top-bar">
-            <div class="cal-country-row">
-              <label for="calCountrySelect">
-                <i data-lucide="map-pin" class="cal-lbl-ic"></i> Select Country
-              </label>
-
-              <select id="calCountrySelect" onchange="loadHolidays()">
-                <option value="GH">🇬🇭 Ghana</option>
-                <option value="NG">🇳🇬 Nigeria</option>
-                <option value="KE">🇰🇪 Kenya</option>
-                <option value="ZA">🇿🇦 South Africa</option>
-                <option value="US">🇺🇸 United States</option>
-                <option value="GB">🇬🇧 United Kingdom</option>
-              </select>
-            </div>
-
-            <div class="cal-nav-row">
-              <button class="cal-nav-btn" onclick="changeCalMonth(-1)">
-                <i data-lucide="chevron-left"></i>
-              </button>
-
-              <span class="cal-month-label" id="calMonthLabel">January 2025</span>
-
-              <button class="cal-nav-btn" onclick="changeCalMonth(1)">
-                <i data-lucide="chevron-right"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Calendar Grid -->
-          <div class="cal-grid-wrap">
-            <div class="cal-dow-row">
-              <span>Sun</span><span>Mon</span><span>Tue</span>
-              <span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
-            </div>
-
-            <div class="cal-days" id="calDays"></div>
-          </div>
-
-          <!-- Legend -->
-          <div class="cal-legend">
-            <span class="cal-leg-item"><span class="cal-dot cal-dot-today"></span>Today</span>
-            <span class="cal-leg-item"><span class="cal-dot cal-dot-holiday"></span>Public Holiday</span>
-            <span class="cal-leg-item"><span class="cal-dot cal-dot-weekend"></span>Weekend</span>
-          </div>
-
-          <!-- Holidays -->
-          <div class="cal-holidays-list">
-            <h4 id="calHolidaysTitle">Upcoming Public Holidays</h4>
-            <div id="calHolidaysList" class="cal-hlist"></div>
-          </div>
-        </div>
-
-        <!-- ===== TOURIST SECTION DIRECTLY UNDER CALENDAR ===== -->
-        <div class="tour-under-cal">
-
-          <div class="mini-head">
-            <h3><i data-lucide="camera"></i> Top Tourist Attractions</h3>
-            <p>Explore famous destinations</p>
-          </div>
-
-          <div class="tour-grid">
-
-            <!-- 1 -->
-<div class="tour-card">
-  <img src="images/cape-coast-1.jpg"
-       onclick="openGallery([
-       'images/cape-coast-1.jpg',
-       'images/cape-coast-2.jpg',
-       'images/cape-coast-3.jpg'
-       ])">
-
-  <div class="tour-info">
-    <h4>Cape Coast Castle – Ghana</h4>
-    <p>
-      Built in the 17th century by European traders, Cape Coast Castle became
-      one of the major forts used during the trans-Atlantic slave trade.
-      Today it stands as a UNESCO World Heritage Site and memorial museum.
-    </p>
-  </div>
-</div>
-
-<!-- 2 -->
-<div class="tour-card">
-  <img src="images/kakum-1.jpg"
-       onclick="openGallery([
-       'images/kakum-1.jpg',
-       'images/kakum-2.jpg',
-       'images/kakum-3.jpg'
-       ])">
-
-  <div class="tour-info">
-    <h4>Kakum National Park – Ghana</h4>
-    <p>
-      Established in 1931 and later made a national park in 1992,
-      Kakum is famous for its rainforest canopy walkway suspended high above
-      the forest floor.
-    </p>
-  </div>
-</div>
-
-<!-- 3 -->
-<div class="tour-card">
-  <img src="images/elmina-1.jpg"
-       onclick="openGallery([
-       'images/elmina-1.jpg',
-       'images/elmina-2.jpg',
-       'images/elmina-3.jpg'
-       ])">
-
-  <div class="tour-info">
-    <h4>Elmina Castle – Ghana</h4>
-    <p>
-      Built by the Portuguese in 1482, Elmina Castle is one of the oldest
-      European buildings in sub-Saharan Africa. It later became central
-      in the slave trade era.
-    </p>
-  </div>
-</div>
-
-<!-- 4 -->
-<div class="tour-card">
-  <img src="images/volta-lake-1.jpg"
-       onclick="openGallery([
-       'images/volta-lake-1.jpg',
-       'images/volta-lake-2.jpg',
-       'images/volta-lake-3.jpg'
-       ])">
-
-  <div class="tour-info">
-    <h4>Volta Lake – Ghana</h4>
-    <p>
-      Created in the 1960s after the Akosombo Dam was built,
-      Volta Lake is one of the world’s largest man-made lakes and a key
-      source of transport, fishing and tourism.
-    </p>
-  </div>
-</div>
-
-<!-- 5 -->
-<div class="tour-card">
-  <img src="images/pyramids-1.jpg"
-       onclick="openGallery([
-       'images/pyramids-1.jpg',
-       'images/pyramids-2.jpg',
-       'images/pyramids-3.jpg'
-       ])">
-
-  <div class="tour-info">
-    <h4>Pyramids of Giza – Egypt</h4>
-    <p>
-      Built over 4,500 years ago, the Pyramids of Giza remain one of the
-      greatest architectural achievements of the ancient world and Egypt’s
-      most iconic attraction.
-    </p>
-  </div>
-</div>
-
-<!-- 6 -->
-<div class="tour-card">
-  <img src="images/victoria-falls-1.jpg"
-       onclick="openGallery([
-       'images/victoria-falls-1.jpg',
-       'images/victoria-falls-2.jpg',
-       'images/victoria-falls-3.jpg'
-       ])">
-
-  <div class="tour-info">
-    <h4>Victoria Falls – Zambia / Zimbabwe</h4>
-    <p>
-      Known locally as “The Smoke That Thunders,” Victoria Falls was named
-      by explorer David Livingstone in 1855. It is one of the largest
-      waterfalls in the world.
-    </p>
-  </div>
-</div>
-
-<!-- 7 -->
-<div class="tour-card">
-  <img src="images/table-mountain-1.jpg"
-       onclick="openGallery([
-       'images/table-mountain-1.jpg',
-       'images/table-mountain-2.jpg',
-       'images/table-mountain-3.jpg'
-       ])">
-
-  <div class="tour-info">
-    <h4>Table Mountain – South Africa</h4>
-    <p>
-      Rising above Cape Town, Table Mountain has been a landmark for sailors
-      for centuries. Its flat top and cableway make it one of Africa’s most
-      visited natural attractions.
-    </p>
-  </div>
-</div>
-
-<!-- 8 -->
-<div class="tour-card">
-  <img src="images/serengeti-1.jpg"
-       onclick="openGallery([
-       'images/serengeti-1.jpg',
-       'images/serengeti-2.jpg',
-       'images/serengeti-3.jpg'
-       ])">
-
-  <div class="tour-info">
-    <h4>Serengeti National Park – Tanzania</h4>
-    <p>
-      Established in 1951, the Serengeti is world-famous for the annual
-      migration of millions of wildebeest and zebras across the plains.
-    </p>
-              </div>
-            </div>
-
-<!-- CARD 1 -->
-            <div class="tour-card">
-              <img src="images/cape-coast-1.jpg"
-                   onclick="openGallery([
-                   'images/cape-coast-1.jpg',
-                   'images/cape-coast-2.jpg',
-                   'images/cape-coast-3.jpg'
-                   ])">
-
-              <div class="tour-info">
-                <h4>Cape Coast Castle</h4>
-                <p>
-                  Historic UNESCO heritage site in Ghana,
-                  once used during the trans-Atlantic slave trade.
-                </p>
-              </div>
-            </div>
-
-            <!-- CARD 2 -->
-            <div class="tour-card">
-              <img src="images/eiffel1.jpg"
-                   onclick="openGallery([
-                   'images/eiffel1.jpg',
-                   'images/eiffel2.jpg',
-                   'images/eiffel3.jpg'
-                   ])">
-
-              <div class="tour-info">
-                <h4>Eiffel Tower</h4>
-                <p>
-                  Paris landmark completed in 1889 and one of the most
-                  visited monuments in the world.
-                </p>
-              </div>
-            </div>
-
-            <!-- CARD 3 -->
-            <div class="tour-card">
-              <img src="images/eiffel1.jpg"
-                   onclick="openGallery([
-                   'images/eiffel1.jpg',
-                   'images/eiffel2.jpg',
-                   'images/eiffel3.jpg'
-                   ])">
-
-              <div class="tour-info">
-                <h4>Eiffel Tower</h4>
-                <p>
-                  Paris landmark completed in 1889 and one of the most
-                  visited monuments in the world.
-                </p>
-              </div>
-            </div>
-
-            <!-- CARD 4 -->
-            <div class="tour-card">
-              <img src="images/dubai1.jpg"
-                   onclick="openGallery([
-                   'images/dubai1.jpg',
-                   'images/dubai2.jpg',
-                   'images/dubai3.jpg'
-                   ])">
-
-              <div class="tour-info">
-                <h4>Burj Khalifa</h4>
-                <p>
-                  The tallest building in the world, located in Dubai,
-                  standing at 828 metres.
-                </p>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-
-      </div>
-      <!-- END LEFT -->
-
-      <!-- ===== RIGHT SIDE CLOCKS ===== -->
-      <div class="tz-panel">
-        <div class="tz-header">
-          <h4><i data-lucide="clock"></i> Live World Clocks</h4>
-          <p>Times update every second</p>
-        </div>
-
-        <div class="tz-grid" id="tzGrid"></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- IMAGE LIGHTBOX -->
-<div id="galleryBox" class="gallery-box">
-  <span class="close-gallery" onclick="closeGallery()">×</span>
-
-  <img id="mainGalleryImg" class="main-gallery-img">
-
-  <div class="thumb-row" id="thumbRow"></div>
-</div>
-
   <!-- CORE SERVICES -->
   <section class="section">
     <div class="container">
@@ -677,7 +344,102 @@
   </section>
  
 
-  
+  <!-- ===== GLOBAL CALENDAR & WORLD CLOCKS ===== -->
+  <section class="section cal-tz-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Travel Essentials</span>
+        <h2>Global <span class="text-blue">Calendar &amp; World Clocks</span></h2>
+        <p>Browse public holidays for any country and track live times across major destinations worldwide</p>
+      </div>
+
+      <div class="cal-tz-wrapper">
+
+        <!-- ===== LEFT: CALENDAR ===== -->
+        <div class="cal-panel">
+          <div class="cal-top-bar">
+            <div class="cal-country-row">
+              <label for="calCountrySelect"><i data-lucide="map-pin" class="cal-lbl-ic"></i> Select Country</label>
+              <select id="calCountrySelect" onchange="loadHolidays()">
+                <option value="GH">🇬🇭 Ghana</option>
+                <option value="NG">🇳🇬 Nigeria</option>
+                <option value="KE">🇰🇪 Kenya</option>
+                <option value="ZA">🇿🇦 South Africa</option>
+                <option value="US">🇺🇸 United States</option>
+                <option value="GB">🇬🇧 United Kingdom</option>
+                <option value="AE">🇦🇪 UAE</option>
+                <option value="DE">🇩🇪 Germany</option>
+                <option value="FR">🇫🇷 France</option>
+                <option value="CA">🇨🇦 Canada</option>
+                <option value="AU">🇦🇺 Australia</option>
+                <option value="IN">🇮🇳 India</option>
+                <option value="CN">🇨🇳 China</option>
+                <option value="JP">🇯🇵 Japan</option>
+                <option value="BR">🇧🇷 Brazil</option>
+                <option value="SG">🇸🇬 Singapore</option>
+                <option value="QA">🇶🇦 Qatar</option>
+                <option value="SA">🇸🇦 Saudi Arabia</option>
+                <option value="EG">🇪🇬 Egypt</option>
+                <option value="ET">🇪🇹 Ethiopia</option>
+                <option value="CI">🇨🇮 Côte d'Ivoire</option>
+                <option value="SN">🇸🇳 Senegal</option>
+                <option value="TZ">🇹🇿 Tanzania</option>
+                <option value="UG">🇺🇬 Uganda</option>
+                <option value="CM">🇨🇲 Cameroon</option>
+                <option value="RW">🇷🇼 Rwanda</option>
+                <option value="MU">🇲🇺 Mauritius</option>
+                <option value="IT">🇮🇹 Italy</option>
+                <option value="ES">🇪🇸 Spain</option>
+                <option value="NL">🇳🇱 Netherlands</option>
+              </select>
+            </div>
+            <div class="cal-nav-row">
+              <button class="cal-nav-btn" onclick="changeCalMonth(-1)"><i data-lucide="chevron-left"></i></button>
+              <span class="cal-month-label" id="calMonthLabel">January 2025</span>
+              <button class="cal-nav-btn" onclick="changeCalMonth(1)"><i data-lucide="chevron-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Calendar grid -->
+          <div class="cal-grid-wrap">
+            <div class="cal-dow-row">
+              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+            <div class="cal-days" id="calDays"></div>
+          </div>
+
+          <!-- Legend -->
+          <div class="cal-legend">
+            <span class="cal-leg-item"><span class="cal-dot cal-dot-today"></span>Today</span>
+            <span class="cal-leg-item"><span class="cal-dot cal-dot-holiday"></span>Public Holiday</span>
+            <span class="cal-leg-item"><span class="cal-dot cal-dot-weekend"></span>Weekend</span>
+          </div>
+
+          <!-- Upcoming holidays list -->
+          <div class="cal-holidays-list">
+            <h4 id="calHolidaysTitle">Upcoming Public Holidays</h4>
+            <div id="calHolidaysList" class="cal-hlist"></div>
+          </div>
+        </div><!-- /cal-panel -->
+
+        <!-- ===== RIGHT: WORLD CLOCKS ===== -->
+        <div class="tz-panel">
+          <div class="tz-header">
+            <h4><i data-lucide="clock"></i> Live World Clocks</h4>
+            <p>Times update every second</p>
+          </div>
+          <div class="tz-grid" id="tzGrid">
+            <!-- Clocks injected by JS -->
+          </div>
+        </div>
+
+      </div><!-- /cal-tz-wrapper -->
+    </div>
+  </section>
+  <!-- ===== END CALENDAR ===== -->
+
+</div><!-- /home -->
+
 
 <!-- =====================================================================  ABOUT  ===================================================================== -->
 <div id="page-about" class="page">
