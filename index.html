@@ -422,6 +422,88 @@
           </div>
         </div><!-- /cal-panel -->
 
+        <!-- ===== TOURIST SITES SECTION (RIGHT UNDER CALENDAR) ===== -->
+<section class="tourism-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-tag">Explore Destinations</span>
+      <h2>Africa & <span class="text-blue">Caribbean Tourist Sites</span></h2>
+      <p>Discover iconic destinations with rich history and breathtaking beauty.</p>
+    </div>
+
+    <div class="tour-grid">
+
+      <!-- 1 -->
+      <div class="tour-card">
+        <img src="images/cape-coast-castle.jpg" alt="Cape Coast Castle" onclick="openGallery('cape')">
+        <div class="tour-content">
+          <h3>Cape Coast Castle, Ghana</h3>
+          <p>A UNESCO World Heritage Site built in the 17th century. It played a major role during the transatlantic slave trade.</p>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="tour-card">
+        <img src="images/victoria-falls.jpg" alt="Victoria Falls" onclick="openGallery('victoria')">
+        <div class="tour-content">
+          <h3>Victoria Falls, Zambia/Zimbabwe</h3>
+          <p>One of the largest waterfalls in the world, known locally as "The Smoke That Thunders."</p>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="tour-card">
+        <img src="images/pyramids.jpg" alt="Pyramids of Giza" onclick="openGallery('giza')">
+        <div class="tour-content">
+          <h3>Pyramids of Giza, Egypt</h3>
+          <p>Built over 4,500 years ago, these ancient pyramids remain one of the Seven Wonders of the Ancient World.</p>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="tour-card">
+        <img src="images/santorini.jpg" alt="Blue Mountain Jamaica" onclick="openGallery('jamaica')">
+        <div class="tour-content">
+          <h3>Blue Mountains, Jamaica</h3>
+          <p>Famous for coffee farms, cool climate, and scenic hiking trails with stunning island views.</p>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="tour-card">
+        <img src="images/barbados.jpg" alt="Barbados Beach" onclick="openGallery('barbados')">
+        <div class="tour-content">
+          <h3>Barbados Beaches</h3>
+          <p>Known for crystal-clear waters, coral reefs, and beautiful tropical coastlines.</p>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="tour-card">
+        <img src="images/table-mountain.jpg" alt="Table Mountain" onclick="openGallery('table')">
+        <div class="tour-content">
+          <h3>Table Mountain, South Africa</h3>
+          <p>An iconic flat-topped mountain overlooking Cape Town, famous for panoramic city views.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== IMAGE GALLERY POPUP ===== -->
+<div class="tour-lightbox" id="tourLightbox">
+  <span class="close-lightbox" onclick="closeGallery()">×</span>
+
+  <img id="mainTourImage" class="main-tour-image" src="">
+
+  <div class="thumb-row" id="thumbRow">
+    <!-- thumbnails injected -->
+  </div>
+</div>
+
         <!-- ===== RIGHT: WORLD CLOCKS ===== -->
         <div class="tz-panel">
           <div class="tz-header">
