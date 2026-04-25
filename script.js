@@ -1092,3 +1092,64 @@ window.addEventListener('load', function() {
   initCalendarAndClocks();
 });
 
+/* ===== TOUR IMAGE DATA ===== */
+const galleries = {
+  cape: [
+    "images/cape-coast-castle.jpg",
+    "images/cape2.jpg",
+    "images/cape3.jpg"
+  ],
+  victoria: [
+    "images/victoria-falls.jpg",
+    "images/victoria2.jpg",
+    "images/victoria3.jpg"
+  ],
+  giza: [
+    "images/pyramids.jpg",
+    "images/giza2.jpg",
+    "images/giza3.jpg"
+  ],
+  jamaica: [
+    "images/santorini.jpg",
+    "images/jamaica2.jpg",
+    "images/jamaica3.jpg"
+  ],
+  barbados: [
+    "images/barbados.jpg",
+    "images/barbados2.jpg",
+    "images/barbados3.jpg"
+  ],
+  table: [
+    "images/table-mountain.jpg",
+    "images/table2.jpg",
+    "images/table3.jpg"
+  ]
+};
+
+
+/* OPEN GALLERY */
+function openGallery(place){
+  const box = document.getElementById("tourLightbox");
+  const main = document.getElementById("mainTourImage");
+  const thumbs = document.getElementById("thumbRow");
+
+  box.style.display = "flex";
+  main.src = galleries[place][0];
+  thumbs.innerHTML = "";
+
+  galleries[place].forEach(img => {
+    thumbs.innerHTML += `
+      <img src="${img}" onclick="changeMainImage('${img}')">
+    `;
+  });
+}
+
+/* CHANGE MAIN IMAGE */
+function changeMainImage(img){
+  document.getElementById("mainTourImage").src = img;
+}
+
+/* CLOSE */
+function closeGallery(){
+  document.getElementById("tourLightbox").style.display = "none";
+}
