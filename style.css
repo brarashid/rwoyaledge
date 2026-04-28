@@ -756,7 +756,7 @@ p{color:var(--grey);line-height:1.8}
 .cal-holidays-list {
   padding: 16px 20px 20px;
   border-top: 1px solid rgba(0,119,182,.08);
-  max-height: 240px;
+  max-height: 260px;
   overflow-y: auto;
 }
 .cal-holidays-list h4 {
@@ -806,23 +806,26 @@ p{color:var(--grey);line-height:1.8}
   font-size: .88rem;
   padding: 16px 0;
 }
-
-/* Scrollbar styling */
 .cal-holidays-list::-webkit-scrollbar { width: 4px; }
 .cal-holidays-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
 .cal-holidays-list::-webkit-scrollbar-thumb { background: var(--blue-lt); border-radius: 4px; }
 
-/* ── TIMEZONE PANEL ── */
+/* ─────────────────────────────────────────
+   TIMEZONE PANEL — grouped by shared offset
+───────────────────────────────────────── */
 .tz-panel {
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 8px 40px rgba(0,119,182,.12);
   border: 1px solid rgba(0,119,182,.1);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .tz-header {
   background: linear-gradient(135deg, #0077B6, #005a8e);
   padding: 20px 24px;
+  flex-shrink: 0;
 }
 .tz-header h4 {
   display: flex;
@@ -836,68 +839,220 @@ p{color:var(--grey);line-height:1.8}
 .tz-header [data-lucide] { width: 18px; height: 18px; }
 .tz-header p { color: rgba(255,255,255,.7); font-size: .82rem; }
 
-.tz-grid {
+/* Groups container — scrollable */
+.tz-groups {
+  overflow-y: auto;
+  flex: 1;
+  max-height: 620px;
+  padding: 0 0 8px;
+}
+.tz-groups::-webkit-scrollbar { width: 4px; }
+.tz-groups::-webkit-scrollbar-track { background: #f1f5f9; }
+.tz-groups::-webkit-scrollbar-thumb { background: var(--blue-lt); border-radius: 4px; }
+
+/* Each timezone group */
+.tz-group {
+  border-bottom: 1px solid rgba(0,119,182,.08);
+}
+.tz-group:last-child { border-bottom: none; }
+
+.tz-group-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px 8px;
+  background: rgba(0,119,182,.04);
+  border-bottom: 1px solid rgba(0,119,182,.06);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+.tz-group-offset {
+  display: inline-block;
+  font-size: .7rem;
+  font-weight: 800;
+  background: var(--blue);
+  color: #fff;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: .04em;
+}
+.tz-group-time-live {
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--blue);
+  font-variant-numeric: tabular-nums;
+  margin-left: auto;
+}
+.tz-group-date-live {
+  font-size: .72rem;
+  color: var(--grey);
+}
+
+/* Cards inside a group */
+.tz-group-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 0;
 }
 
 .tz-card {
-  padding: 16px 18px;
-  border-bottom: 1px solid rgba(0,119,182,.07);
+  padding: 12px 14px;
   border-right: 1px solid rgba(0,119,182,.07);
+  border-bottom: 1px solid rgba(0,119,182,.07);
   transition: background .2s ease;
   cursor: default;
 }
-.tz-card:hover { background: rgba(0,119,182,.03); }
-.tz-card:nth-child(even) { border-right: none; }
+.tz-card:last-child { border-right: none; }
+.tz-card:hover { background: rgba(0,119,182,.04); }
 
-.tz-flag { font-size: 1.3rem; margin-bottom: 4px; display: block; }
-.tz-city { font-size: .78rem; font-weight: 800; color: var(--black); text-transform: uppercase; letter-spacing: .04em; }
-.tz-country { font-size: .7rem; color: var(--grey); margin-bottom: 6px; }
+.tz-flag { font-size: 1.3rem; margin-bottom: 3px; display: block; }
+.tz-city { font-size: .76rem; font-weight: 800; color: var(--black); text-transform: uppercase; letter-spacing: .04em; }
+.tz-country { font-size: .68rem; color: var(--grey); margin-bottom: 5px; }
 .tz-time {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 900;
   color: var(--blue);
   font-variant-numeric: tabular-nums;
   letter-spacing: -.01em;
   line-height: 1;
 }
-.tz-date { font-size: .72rem; color: var(--grey); margin-top: 3px; }
+.tz-date { font-size: .68rem; color: var(--grey); margin-top: 2px; }
 .tz-offset {
   display: inline-block;
-  font-size: .65rem;
+  font-size: .62rem;
   background: rgba(0,119,182,.08);
   color: var(--blue);
-  padding: 2px 6px;
+  padding: 2px 5px;
   border-radius: 4px;
   font-weight: 700;
-  margin-top: 4px;
+  margin-top: 3px;
 }
-
-/* Day/Night indicator */
 .tz-daynight {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: .7rem;
+  font-size: .67rem;
   color: var(--grey);
-  margin-top: 3px;
+  margin-top: 2px;
 }
 .tz-sun { color: #f59e0b; }
 .tz-moon { color: #6366f1; }
 
+/* ─────────────────────────────────────────
+   TOURIST SITES SECTION
+───────────────────────────────────────── */
+.tourist-section {
+  margin-top: 72px;
+}
+
+.tourist-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.tourist-header h2 { font-size: 2.2rem; margin: 10px 0 12px; }
+.tourist-header p { color: var(--grey); max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+.tourist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.tourist-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,119,182,.1);
+  border: 1px solid rgba(0,119,182,.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.tourist-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,119,182,.18);
+}
+
+.tourist-img-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.tourist-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+  display: block;
+}
+.tourist-card:hover .tourist-img-wrap img {
+  transform: scale(1.06);
+}
+
+.tourist-country-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  letter-spacing: .03em;
+}
+
+.tourist-body {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.tourist-body h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.tourist-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: .78rem;
+  color: var(--blue);
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: .01em;
+}
+.t-pin { width: 13px; height: 13px; flex-shrink: 0; }
+.tourist-body p {
+  font-size: .86rem;
+  color: var(--grey);
+  line-height: 1.65;
+  flex: 1;
+  margin: 0;
+}
+
 /* ── RESPONSIVE ── */
+@media (max-width: 1200px) {
+  .tourist-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 1024px) {
   .cal-tz-wrapper { grid-template-columns: 1fr; }
-  .tz-grid { grid-template-columns: repeat(3, 1fr); }
-  .tz-card:nth-child(even) { border-right: 1px solid rgba(0,119,182,.07); }
-  .tz-card:nth-child(3n) { border-right: none; }
+  .tz-group-cards { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+}
+@media (max-width: 768px) {
+  .tourist-grid { grid-template-columns: repeat(2, 1fr); }
+  .tourist-img-wrap { height: 170px; }
 }
 @media (max-width: 640px) {
-  .tz-grid { grid-template-columns: 1fr 1fr; }
-  .tz-card:nth-child(3n) { border-right: 1px solid rgba(0,119,182,.07); }
-  .tz-card:nth-child(even) { border-right: none; }
+  .tourist-grid { grid-template-columns: 1fr; }
   .cal-day { font-size: .75rem; min-height: 30px; }
+  .tz-group-cards { grid-template-columns: 1fr 1fr; }
 }
 

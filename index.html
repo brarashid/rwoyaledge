@@ -347,7 +347,7 @@
  
 
   <!-- ===== GLOBAL CALENDAR & WORLD CLOCKS ===== -->
-  <section class="section cal-tz-section">
+  <section class="section cal-tz-section" id="worldclock">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Travel Essentials</span>
@@ -355,9 +355,10 @@
         <p>Browse public holidays for any country and track live times across major destinations worldwide</p>
       </div>
 
+      <!-- ===== CALENDAR + CLOCKS SIDE BY SIDE ===== -->
       <div class="cal-tz-wrapper">
 
-        <!-- ===== LEFT: CALENDAR ===== -->
+        <!-- LEFT: CALENDAR -->
         <div class="cal-panel">
           <div class="cal-top-bar">
             <div class="cal-country-row">
@@ -401,43 +402,204 @@
               <button class="cal-nav-btn" onclick="changeCalMonth(1)"><i data-lucide="chevron-right"></i></button>
             </div>
           </div>
-
-          <!-- Calendar grid -->
           <div class="cal-grid-wrap">
             <div class="cal-dow-row">
               <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
             </div>
             <div class="cal-days" id="calDays"></div>
           </div>
-
-          <!-- Legend -->
           <div class="cal-legend">
             <span class="cal-leg-item"><span class="cal-dot cal-dot-today"></span>Today</span>
             <span class="cal-leg-item"><span class="cal-dot cal-dot-holiday"></span>Public Holiday</span>
             <span class="cal-leg-item"><span class="cal-dot cal-dot-weekend"></span>Weekend</span>
           </div>
-
-          <!-- Upcoming holidays list -->
           <div class="cal-holidays-list">
             <h4 id="calHolidaysTitle">Upcoming Public Holidays</h4>
             <div id="calHolidaysList" class="cal-hlist"></div>
           </div>
         </div><!-- /cal-panel -->
 
-        
-
-        <!-- ===== RIGHT: WORLD CLOCKS ===== -->
+        <!-- RIGHT: WORLD CLOCKS grouped by timezone -->
         <div class="tz-panel">
           <div class="tz-header">
             <h4><i data-lucide="clock"></i> Live World Clocks</h4>
-            <p>Times update every second</p>
+            <p>Times update every second &mdash; cities sharing the same timezone are grouped together</p>
           </div>
-          <div class="tz-grid" id="tzGrid">
-            <!-- Clocks injected by JS -->
+          <div class="tz-groups" id="tzGroups">
+            <!-- Injected by JS -->
           </div>
         </div>
 
       </div><!-- /cal-tz-wrapper -->
+
+      <!-- ===== TOURIST SITES ===== -->
+      <div class="tourist-section">
+        <div class="tourist-header">
+          <span class="section-tag">Iconic Destinations</span>
+          <h2>Must-Visit <span class="text-blue">Tourist Sites</span></h2>
+          <p>Explore some of the world's most breathtaking landmarks — each with a story that spans centuries</p>
+        </div>
+        <div class="tourist-grid" id="touristGrid">
+
+          <!-- Eiffel Tower -->
+          <div class="tourist-card">
+            <div class="tourist-img-wrap">
+              <img src="https://images.unsplash.com/photo-1543349689-9a4d426bee8e?w=600&q=80" alt="Eiffel Tower, Paris" loading="lazy"/>
+              <span class="tourist-country-badge">🇫🇷 France</span>
+            </div>
+            <div class="tourist-body">
+              <h3>Eiffel Tower</h3>
+              <span class="tourist-location"><i data-lucide="map-pin" class="t-pin"></i> Paris, France</span>
+              <p>Designed by Gustave Eiffel and completed in 1889 for the World's Fair, this 330-metre iron lattice tower was initially criticised but became the world's most visited monument — welcoming over 7 million visitors annually and symbolising French ingenuity and romance.</p>
+            </div>
+          </div>
+
+          <!-- Great Pyramid of Giza -->
+          <div class="tourist-card">
+            <div class="tourist-img-wrap">
+              <img src="https://images.unsplash.com/photo-1539768942893-daf53e448371?w=600&q=80" alt="Great Pyramid of Giza" loading="lazy"/>
+              <span class="tourist-country-badge">🇪🇬 Egypt</span>
+            </div>
+            <div class="tourist-body">
+              <h3>Great Pyramid of Giza</h3>
+              <span class="tourist-location"><i data-lucide="map-pin" class="t-pin"></i> Giza, Egypt</span>
+              <p>Built around 2560 BC for Pharaoh Khufu, the Great Pyramid stood as the world's tallest man-made structure for over 3,800 years. The only surviving Wonder of the Ancient World, it contains an estimated 2.3 million stone blocks and continues to mystify engineers and archaeologists to this day.</p>
+            </div>
+          </div>
+
+          <!-- Burj Khalifa -->
+          <div class="tourist-card">
+            <div class="tourist-img-wrap">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Burj Khalifa, Dubai" loading="lazy"/>
+              <span class="tourist-country-badge">🇦🇪 UAE</span>
+            </div>
+            <div class="tourist-body">
+              <h3>Burj Khalifa</h3>
+              <span class="tourist-location"><i data-lucide="map-pin" class="t-pin"></i> Dubai, UAE</span>
+              <p>Standing at a staggering 828 metres, the Burj Khalifa has been the world's tallest building since 2010. A symbol of Dubai's ambition and vision, this architectural marvel took 22 million man-hours to build. Its observation decks at levels 124 and 148 offer panoramic views stretching 95 km.</p>
+            </div>
+          </div>
+
+          <!-- Machu Picchu -->
+          <div class="tourist-card">
+            <div class="tourist-img-wrap">
+              <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=600&q=80" alt="Machu Picchu, Peru" loading="lazy"/>
+              <span class="tourist-country-badge">🇵🇪 Peru</span>
+            </div>
+            <div class="tourist-body">
+              <h3>Machu Picchu</h3>
+              <span class="tourist-location"><i data-lucide="map-pin" class="t-pin"></i> Cusco Region, Peru</span>
+              <p>Perched 2,430 metres above sea level in the Andes, this 15th-century Inca citadel was rediscovered by American historian Hiram Bingham in 1911. Named a UNESCO World Heritage Site in 1983, its dry-stone walls, terraces, and temples were built without mortar — yet have withstood earthquakes for over 500 years.</p>
+            </div>
+          </div>
+
+          <!-- Colosseum -->
+          <div class="tourist-card">
+            <div class="tourist-img-wrap">
+              <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80" alt="Colosseum, Rome" loading="lazy"/>
+              <span class="tourist-country-badge">🇮🇹 Italy</span>
+            </div>
+            <div class="tourist-body">
+              <h3>The Colosseum</h3>
+              <span class="tourist-location"><i data-lucide="map-pin" class="t-pin"></i> Rome, Italy</span>
+              <p>Completed in 80 AD, the Colosseum is the largest amphitheatre ever built, capable of holding 50,000 to 80,000 spectators. Commissioned by Emperor Vespasian of the Flavian dynasty, it hosted gladiatorial contests, public spectacles, and animal hunts. Today it stands as one of Rome's greatest architectural achievements.</p>
+            </div>
+          </div>
+
+          <!-- Great Wall of China -->
+          <div class="tourist-card">
+            <div class="tourist-img-wrap">
+              <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=600&q=80" alt="Great Wall of China" loading="lazy"/>
+              <span class="tourist-country-badge">🇨🇳 China</span>
+            </div>
+            <div class="tourist-body">
+              <h3>Great Wall of China</h3>
+              <span class="tourist-location"><i data-lucide="map-pin" class="t-pin"></i> Northern China</span>
+              <p>Stretching over 21,000 km across northern China, the Great Wall was built over centuries beginning in the 7th century BC. Originally constructed to protect Chinese states from nomadic invasions, it was largely built during the Ming dynasty (1368–1644). A UNESCO World Heritage Site, it remains one of humanity's greatest engineering feats.</p>
+            </div>
+          </div>
+
+          <!-- Taj Mahal -->
+          <div class="tourist-card">
+            <div class="tourist-img-wrap">
+              <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80" alt="Taj Mahal, India" loading="lazy"/>
+              <span class="tourist-country-badge">🇮🇳 India</span>
+            </div>
+            <div class="tourist-body">
+              <h3>Taj Mahal</h3>
+              <span class="tourist-location"><i data-lucide="map-pin" class="t-pin"></i> Agra, India</span>
+              <p>Built between 1631 and 1653 by Mughal Emperor Shah Jahan as a mausoleum for his beloved wife Mumtaz Mahal, the Taj Mahal is considered the finest example of Mughal architecture. Its white marble gleams at different times of day — pinkish at dawn, white at noon, and golden under moonlight. Over 8 million visit each year.</p>
+            </div>
+          </div>
+
+          <!-- Santorini -->
+          <div class="tourist-card">
+            <div class="tourist-img-wrap">
+              <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80" alt="Santorini, Greece" loading="lazy"/>
+              <span class="tourist-country-badge">🇬🇷 Greece</span>
+            </div>
+            <div class="tourist-body">
+              <h3>Santorini</h3>
+              <span class="tourist-location"><i data-lucide="map-pin" class="t-pin"></i> Cyclades, Greece</span>
+              <p>Formed by one of history's largest volcanic eruptions around 1600 BC, Santorini's crescent shape and towering caldera cliffs are among the most dramatic landscapes on earth. The island's iconic white-and-blue architecture, crystal waters, and legendary sunsets at Oia have made it one of the world's most photographed destinations.</p>
+            </div>
+          </div>
+
+          <!-- Victoria Falls -->
+          <div class="tourist-card">
+            <div class="tourist-img-wrap">
+              <img src="https://images.unsplash.com/photo-1580746738099-7c44cf87f2a3?w=600&q=80" alt="Victoria Falls, Zambia/Zimbabwe" loading="lazy"/>
+              <span class="tourist-country-badge">🌍 Africa</span>
+            </div>
+            <div class="tourist-body">
+              <h3>Victoria Falls</h3>
+              <span class="tourist-location"><i data-lucide="map-pin" class="t-pin"></i> Zambia / Zimbabwe</span>
+              <p>Known as "Mosi-oa-Tunya" (The Smoke That Thunders) by local Kololo people, Victoria Falls is the world's largest waterfall by combined width and height. Discovered by David Livingstone in 1855, this UNESCO World Heritage Site stretches 1,708 metres wide and plunges 108 metres — creating a spray visible from 50 km away.</p>
+            </div>
+          </div>
+
+          <!-- Independence Arch Ghana -->
+          <div class="tourist-card">
+            <div class="tourist-img-wrap">
+              <img src="https://images.unsplash.com/photo-1633169338009-4bd8e87c21fb?w=600&q=80" alt="Independence Arch, Accra" loading="lazy"/>
+              <span class="tourist-country-badge">🇬🇭 Ghana</span>
+            </div>
+            <div class="tourist-body">
+              <h3>Independence Arch</h3>
+              <span class="tourist-location"><i data-lucide="map-pin" class="t-pin"></i> Accra, Ghana</span>
+              <p>Standing proudly at Black Star Square in Accra, the Independence Arch commemorates Ghana's independence from British rule on 6th March 1957 — making Ghana the first sub-Saharan African country to gain independence. The arch bears the inscription "Freedom and Justice" and sits at the heart of the country's most historic ceremonial ground, symbolising pan-African pride and liberation.</p>
+            </div>
+          </div>
+
+          <!-- Sydney Opera House -->
+          <div class="tourist-card">
+            <div class="tourist-img-wrap">
+              <img src="https://images.unsplash.com/photo-1523428096881-5bd79d043006?w=600&q=80" alt="Sydney Opera House" loading="lazy"/>
+              <span class="tourist-country-badge">🇦🇺 Australia</span>
+            </div>
+            <div class="tourist-body">
+              <h3>Sydney Opera House</h3>
+              <span class="tourist-location"><i data-lucide="map-pin" class="t-pin"></i> Sydney, Australia</span>
+              <p>Designed by Danish architect Jørn Utzon and opened in 1973, the Sydney Opera House is one of the 20th century's most distinctive buildings. Its sail-like shells — actually spherical triangle forms — were an engineering revolution. Now a UNESCO World Heritage Site, it hosts over 1,800 performances annually attended by more than 1.2 million people.</p>
+            </div>
+          </div>
+
+          <!-- Petra -->
+          <div class="tourist-card">
+            <div class="tourist-img-wrap">
+              <img src="https://images.unsplash.com/photo-1579606032821-4e6161c81bd3?w=600&q=80" alt="Petra, Jordan" loading="lazy"/>
+              <span class="tourist-country-badge">🇯🇴 Jordan</span>
+            </div>
+            <div class="tourist-body">
+              <h3>Petra</h3>
+              <span class="tourist-location"><i data-lucide="map-pin" class="t-pin"></i> Ma'an Governorate, Jordan</span>
+              <p>Known as the "Rose City" for its rose-red sandstone cliffs, Petra was established as the capital of the Nabataean Kingdom around the 4th century BC. Carved directly into rock, its most famous structure — Al-Khazneh (The Treasury) — stands 43 metres high. Lost to the Western world for centuries, it was rediscovered by Swiss explorer Johann Ludwig Burckhardt in 1812.</p>
+            </div>
+          </div>
+
+        </div><!-- /tourist-grid -->
+      </div><!-- /tourist-section -->
+
     </div>
   </section>
   <!-- ===== END CALENDAR ===== -->

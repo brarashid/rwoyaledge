@@ -993,88 +993,209 @@ function fmtDate(d) {
   return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
 }
 
-// ── WORLD CLOCKS ─────────────────────────────────────────────────────────
-const TIMEZONES = [
-  { flag:'🇬🇭', city:'Accra',         country:'Ghana',           tz:'Africa/Accra',         offset:'GMT+0'  },
-  { flag:'🇳🇬', city:'Lagos',         country:'Nigeria',         tz:'Africa/Lagos',         offset:'GMT+1'  },
-  { flag:'🇰🇪', city:'Nairobi',       country:'Kenya',           tz:'Africa/Nairobi',       offset:'GMT+3'  },
-  { flag:'🇿🇦', city:'Johannesburg',  country:'South Africa',    tz:'Africa/Johannesburg',  offset:'GMT+2'  },
-  { flag:'🇬🇧', city:'London',        country:'United Kingdom',  tz:'Europe/London',        offset:'GMT+0/+1'},
-  { flag:'🇩🇪', city:'Frankfurt',     country:'Germany',         tz:'Europe/Berlin',        offset:'GMT+1/+2'},
-  { flag:'🇫🇷', city:'Paris',         country:'France',          tz:'Europe/Paris',         offset:'GMT+1/+2'},
-  { flag:'🇦🇪', city:'Dubai',         country:'UAE',             tz:'Asia/Dubai',           offset:'GMT+4'  },
-  { flag:'🇶🇦', city:'Doha',          country:'Qatar',           tz:'Asia/Qatar',           offset:'GMT+3'  },
-  { flag:'🇸🇦', city:'Riyadh',        country:'Saudi Arabia',    tz:'Asia/Riyadh',          offset:'GMT+3'  },
-  { flag:'🇺🇸', city:'New York',      country:'United States',   tz:'America/New_York',     offset:'GMT-5/-4'},
-  { flag:'🇺🇸', city:'Los Angeles',   country:'United States',   tz:'America/Los_Angeles',  offset:'GMT-8/-7'},
-  { flag:'🇨🇦', city:'Toronto',       country:'Canada',          tz:'America/Toronto',      offset:'GMT-5/-4'},
-  { flag:'🇧🇷', city:'São Paulo',     country:'Brazil',          tz:'America/Sao_Paulo',    offset:'GMT-3'  },
-  { flag:'🇮🇳', city:'Mumbai',        country:'India',           tz:'Asia/Kolkata',         offset:'GMT+5:30'},
-  { flag:'🇨🇳', city:'Beijing',       country:'China',           tz:'Asia/Shanghai',        offset:'GMT+8'  },
-  { flag:'🇯🇵', city:'Tokyo',         country:'Japan',           tz:'Asia/Tokyo',           offset:'GMT+9'  },
-  { flag:'🇸🇬', city:'Singapore',     country:'Singapore',       tz:'Asia/Singapore',       offset:'GMT+8'  },
-  { flag:'🇦🇺', city:'Sydney',        country:'Australia',       tz:'Australia/Sydney',     offset:'GMT+10/+11'},
-  { flag:'🇪🇬', city:'Cairo',         country:'Egypt',           tz:'Africa/Cairo',         offset:'GMT+2'  },
-  { flag:'🇪🇹', city:'Addis Ababa',   country:'Ethiopia',        tz:'Africa/Addis_Ababa',   offset:'GMT+3'  },
-  { flag:'🇸🇳', city:'Dakar',         country:'Senegal',         tz:'Africa/Dakar',         offset:'GMT+0'  },
+// ── WORLD CLOCKS — grouped by shared UTC offset ─────────────────────────
+// Countries sharing the same effective UTC offset are grouped together.
+// Grouping key is the IANA timezone representative for that offset.
+
+const TIMEZONE_GROUPS = [
+  {
+    label: 'GMT / UTC+0',
+    representativeTZ: 'Africa/Accra',
+    clocks: [
+      { flag:'🇬🇭', city:'Accra',    country:'Ghana',      tz:'Africa/Accra'  },
+      { flag:'🇸🇳', city:'Dakar',    country:'Senegal',    tz:'Africa/Dakar'  },
+      { flag:'🇬🇧', city:'London',   country:'UK (GMT)',   tz:'Europe/London' }
+    ]
+  },
+  {
+    label: 'UTC+1',
+    representativeTZ: 'Africa/Lagos',
+    clocks: [
+      { flag:'🇳🇬', city:'Lagos',    country:'Nigeria',    tz:'Africa/Lagos'  },
+      { flag:'🇨🇲', city:'Yaoundé',  country:'Cameroon',   tz:'Africa/Douala' },
+      { flag:'🇨🇮', city:'Abidjan',  country:'Côte d'Ivoire', tz:'Africa/Abidjan' }
+    ]
+  },
+  {
+    label: 'UTC+2',
+    representativeTZ: 'Africa/Johannesburg',
+    clocks: [
+      { flag:'🇿🇦', city:'Johannesburg', country:'South Africa', tz:'Africa/Johannesburg' },
+      { flag:'🇪🇬', city:'Cairo',    country:'Egypt',      tz:'Africa/Cairo'  },
+      { flag:'🇷🇼', city:'Kigali',   country:'Rwanda',     tz:'Africa/Kigali' }
+    ]
+  },
+  {
+    label: 'UTC+3',
+    representativeTZ: 'Africa/Nairobi',
+    clocks: [
+      { flag:'🇰🇪', city:'Nairobi',   country:'Kenya',       tz:'Africa/Nairobi'       },
+      { flag:'🇪🇹', city:'Addis Ababa',country:'Ethiopia',   tz:'Africa/Addis_Ababa'   },
+      { flag:'🇹🇿', city:'Dar es Salaam',country:'Tanzania', tz:'Africa/Dar_es_Salaam' },
+      { flag:'🇺🇬', city:'Kampala',   country:'Uganda',      tz:'Africa/Kampala'       },
+      { flag:'🇶🇦', city:'Doha',      country:'Qatar',       tz:'Asia/Qatar'           },
+      { flag:'🇸🇦', city:'Riyadh',    country:'Saudi Arabia',tz:'Asia/Riyadh'          }
+    ]
+  },
+  {
+    label: 'UTC+4',
+    representativeTZ: 'Asia/Dubai',
+    clocks: [
+      { flag:'🇦🇪', city:'Dubai',     country:'UAE',         tz:'Asia/Dubai'    },
+      { flag:'🇲🇺', city:'Port Louis',country:'Mauritius',   tz:'Indian/Mauritius' }
+    ]
+  },
+  {
+    label: 'UTC+5:30',
+    representativeTZ: 'Asia/Kolkata',
+    clocks: [
+      { flag:'🇮🇳', city:'Mumbai',    country:'India',       tz:'Asia/Kolkata'  },
+      { flag:'🇮🇳', city:'New Delhi', country:'India',       tz:'Asia/Kolkata'  }
+    ]
+  },
+  {
+    label: 'UTC+8',
+    representativeTZ: 'Asia/Shanghai',
+    clocks: [
+      { flag:'🇨🇳', city:'Beijing',   country:'China',       tz:'Asia/Shanghai' },
+      { flag:'🇸🇬', city:'Singapore', country:'Singapore',   tz:'Asia/Singapore' }
+    ]
+  },
+  {
+    label: 'UTC+9',
+    representativeTZ: 'Asia/Tokyo',
+    clocks: [
+      { flag:'🇯🇵', city:'Tokyo',     country:'Japan',       tz:'Asia/Tokyo'    }
+    ]
+  },
+  {
+    label: 'UTC+10/+11',
+    representativeTZ: 'Australia/Sydney',
+    clocks: [
+      { flag:'🇦🇺', city:'Sydney',    country:'Australia',   tz:'Australia/Sydney' }
+    ]
+  },
+  {
+    label: 'UTC+1/+2 (Central Europe)',
+    representativeTZ: 'Europe/Berlin',
+    clocks: [
+      { flag:'🇩🇪', city:'Frankfurt', country:'Germany',     tz:'Europe/Berlin' },
+      { flag:'🇫🇷', city:'Paris',     country:'France',      tz:'Europe/Paris'  },
+      { flag:'🇮🇹', city:'Rome',      country:'Italy',       tz:'Europe/Rome'   },
+      { flag:'🇪🇸', city:'Madrid',    country:'Spain',       tz:'Europe/Madrid' },
+      { flag:'🇳🇱', city:'Amsterdam', country:'Netherlands', tz:'Europe/Amsterdam' }
+    ]
+  },
+  {
+    label: 'UTC−5/−4 (Eastern Americas)',
+    representativeTZ: 'America/New_York',
+    clocks: [
+      { flag:'🇺🇸', city:'New York',  country:'United States', tz:'America/New_York'  },
+      { flag:'🇨🇦', city:'Toronto',   country:'Canada',        tz:'America/Toronto'   }
+    ]
+  },
+  {
+    label: 'UTC−8/−7 (Pacific Americas)',
+    representativeTZ: 'America/Los_Angeles',
+    clocks: [
+      { flag:'🇺🇸', city:'Los Angeles', country:'United States', tz:'America/Los_Angeles' }
+    ]
+  },
+  {
+    label: 'UTC−3 (South America)',
+    representativeTZ: 'America/Sao_Paulo',
+    clocks: [
+      { flag:'🇧🇷', city:'São Paulo', country:'Brazil',      tz:'America/Sao_Paulo' }
+    ]
+  }
 ];
 
+// Build the grouped clock DOM
 function buildWorldClocks() {
-  const grid = document.getElementById('tzGrid');
-  if (!grid) return;
-  grid.innerHTML = TIMEZONES.map((tz, i) =>
-    `<div class="tz-card" id="tzcard-${i}">
-      <span class="tz-flag">${tz.flag}</span>
-      <div class="tz-city">${tz.city}</div>
-      <div class="tz-country">${tz.country}</div>
-      <div class="tz-time" id="tztime-${i}">--:--:--</div>
-      <div class="tz-date" id="tzdate-${i}">---</div>
-      <span class="tz-offset">${tz.offset}</span>
-      <div class="tz-daynight" id="tzdn-${i}"></div>
-    </div>`
-  ).join('');
+  const container = document.getElementById('tzGroups');
+  if (!container) return;
+
+  let html = '';
+  TIMEZONE_GROUPS.forEach((group, gi) => {
+    // Unique IDs for the live group header time/date
+    const headTimeId = `tz-gh-time-${gi}`;
+    const headDateId = `tz-gh-date-${gi}`;
+    const cards = group.clocks.map((tz, ci) => {
+      const id = `tzc-${gi}-${ci}`;
+      return `
+        <div class="tz-card" id="${id}">
+          <span class="tz-flag">${tz.flag}</span>
+          <div class="tz-city">${tz.city}</div>
+          <div class="tz-country">${tz.country}</div>
+          <div class="tz-time" id="${id}-t">--:--:--</div>
+          <div class="tz-date" id="${id}-d">---</div>
+          <div class="tz-daynight" id="${id}-dn"></div>
+        </div>`;
+    }).join('');
+
+    html += `
+      <div class="tz-group">
+        <div class="tz-group-header">
+          <span class="tz-group-offset">${group.label}</span>
+          <span class="tz-group-date-live" id="${headDateId}"></span>
+          <span class="tz-group-time-live" id="${headTimeId}">--:--:--</span>
+        </div>
+        <div class="tz-group-cards">${cards}</div>
+      </div>`;
+  });
+
+  container.innerHTML = html;
 }
 
 function updateClocks() {
   const now = new Date();
-  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
-  TIMEZONES.forEach((tz, i) => {
+  TIMEZONE_GROUPS.forEach((group, gi) => {
+    // Update group header with representative TZ
     try {
-      const timeStr = new Intl.DateTimeFormat('en-GB', {
-        timeZone: tz.tz,
-        hour: '2-digit', minute: '2-digit', second: '2-digit',
-        hour12: false
+      const repTime = new Intl.DateTimeFormat('en-GB', {
+        timeZone: group.representativeTZ,
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
       }).format(now);
-
-      const dateObj = new Intl.DateTimeFormat('en-GB', {
-        timeZone: tz.tz,
-        weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
-      }).formatToParts(now);
-
-      const parts = {};
-      dateObj.forEach(p => { parts[p.type] = p.value; });
-      const dateStr = `${parts.weekday}, ${parts.day} ${parts.month} ${parts.year}`;
-
-      // Day/night based on local hour
-      const hourStr = new Intl.DateTimeFormat('en-GB', {
-        timeZone: tz.tz, hour: 'numeric', hour12: false
+      const repDate = new Intl.DateTimeFormat('en-GB', {
+        timeZone: group.representativeTZ,
+        weekday: 'short', day: '2-digit', month: 'short'
       }).format(now);
-      const hr = parseInt(hourStr);
-      const isDay = hr >= 6 && hr < 20;
+      const htEl = document.getElementById(`tz-gh-time-${gi}`);
+      const hdEl = document.getElementById(`tz-gh-date-${gi}`);
+      if (htEl) htEl.textContent = repTime;
+      if (hdEl) hdEl.textContent = repDate;
+    } catch(e) {}
 
-      const tEl = document.getElementById(`tztime-${i}`);
-      const dEl = document.getElementById(`tzdate-${i}`);
-      const dnEl = document.getElementById(`tzdn-${i}`);
-      if (tEl) tEl.textContent = timeStr;
-      if (dEl) dEl.textContent = dateStr;
-      if (dnEl) dnEl.innerHTML = isDay
-        ? `<i data-lucide="sun" class="tz-sun" style="width:12px;height:12px"></i> Daytime`
-        : `<i data-lucide="moon" class="tz-moon" style="width:12px;height:12px"></i> Nighttime`;
-    } catch(e) { /* timezone not supported */ }
+    // Update individual city cards
+    group.clocks.forEach((tz, ci) => {
+      const id = `tzc-${gi}-${ci}`;
+      try {
+        const timeStr = new Intl.DateTimeFormat('en-GB', {
+          timeZone: tz.tz,
+          hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        }).format(now);
+
+        const dateStr = new Intl.DateTimeFormat('en-GB', {
+          timeZone: tz.tz,
+          weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+        }).format(now);
+
+        const hrNum = parseInt(new Intl.DateTimeFormat('en-GB', {
+          timeZone: tz.tz, hour: 'numeric', hour12: false
+        }).format(now));
+        const isDay = hrNum >= 6 && hrNum < 20;
+
+        const tEl = document.getElementById(`${id}-t`);
+        const dEl = document.getElementById(`${id}-d`);
+        const dnEl = document.getElementById(`${id}-dn`);
+        if (tEl) tEl.textContent = timeStr;
+        if (dEl) dEl.textContent = dateStr;
+        if (dnEl) dnEl.innerHTML = isDay
+          ? `<i data-lucide="sun" class="tz-sun" style="width:11px;height:11px"></i> Day`
+          : `<i data-lucide="moon" class="tz-moon" style="width:11px;height:11px"></i> Night`;
+      } catch(e) {}
+    });
   });
-  // Reinit lucide for sun/moon icons
   if (window.lucide) lucide.createIcons();
 }
 
