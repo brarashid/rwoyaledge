@@ -63,20 +63,7 @@ document.addEventListener('change', function (e) {
 });
 
 // ===== HANDLE BOOKING =====
-function handleBook(type) {
-  const labels = { flight: 'Flight Search Submitted!', hotel: 'Hotel Search Submitted!', car: 'Car Rental Search Submitted!' };
-  const msgs = {
-    flight: 'Our travel team will contact you shortly with the best flight options.',
-    hotel: "We'll reach out with curated hotel and Airbnb recommendations.",
-    car: 'Our team will get back to you with the best car rental deals.'
-  };
-  document.getElementById('toastHeading').textContent = labels[type] || 'Request Sent!';
-  document.getElementById('toastBody').textContent = msgs[type] || 'Our team will be in touch shortly.';
-  const toast = document.getElementById('bToast');
-  toast.classList.add('show');
-  lucide.createIcons();
-  setTimeout(() => toast.classList.remove('show'), 5000);
-}
+
 function closeToast() { document.getElementById('bToast').classList.remove('show'); }
 
 // ===== SCROLL REVEAL =====
@@ -103,15 +90,10 @@ window.addEventListener('load', function () {
   lucide.createIcons();
   showPage('home');
   initReveal();
+  initCalendarAndClocks();
 });
 
-function switchBookTab(tab, btn) {
-  document.querySelectorAll(".b-pane").forEach(p => p.classList.remove("b-pane--active"));
-  document.querySelectorAll(".b-tab").forEach(b => b.classList.remove("b-tab--active"));
 
-  document.getElementById("pane-" + tab).classList.add("b-pane--active");
-  btn.classList.add("b-tab--active");
-}
 
 function handleBook(type) {
 
@@ -148,9 +130,7 @@ Please send available options and prices.`;
 
   window.open(url, "_blank");
 }
-function closeToast() {
-  document.getElementById("bToast").style.display = "none";
-}
+
 /* ================================================================
    CALENDAR & WORLD CLOCKS
    - All public holidays are hardcoded (no API needed, no updates required)
@@ -1013,7 +993,7 @@ const TIMEZONE_GROUPS = [
     clocks: [
       { flag:'🇳🇬', city:'Lagos',    country:'Nigeria',    tz:'Africa/Lagos'  },
       { flag:'🇨🇲', city:'Yaoundé',  country:'Cameroon',   tz:'Africa/Douala' },
-      { flag:'🇨🇮', city:'Abidjan',  country:'Côte d'Ivoire', tz:'Africa/Abidjan' }
+      { flag:'🇨🇮', city:'Abidjan',  country:"Côte d'Ivoire", tz:'Africa/Abidjan' }
     ]
   },
   {
@@ -1206,10 +1186,3 @@ function initCalendarAndClocks() {
   updateClocks();
   setInterval(updateClocks, 1000);
 }
-
-// Hook into the existing load handler
-const _origLoad = window.onload;
-window.addEventListener('load', function() {
-  initCalendarAndClocks();
-});
-
