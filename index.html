@@ -9,6 +9,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 <body>
 
@@ -30,6 +31,7 @@
       <li><a href="#" onclick="showPage('affiliate')" data-page="affiliate">Affiliate</a></li>
       <li><a href="#" onclick="showPage('contact')" data-page="contact">Contact</a></li>
       <li><a href="#" class="btn-primary nav-cta" onclick="showPage('contact')">Get Started</a></li>
+      <li class="theme-toggle-li"><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i data-lucide="moon"></i></button></li>
     </ul>
   </div>
 </nav>
@@ -481,7 +483,7 @@
   </section>
 
 
-  <!-- TEAM WITH SOCIALS -->
+  <!-- TEAM WITH SOCIALS — commented out, restore when ready
   <section class="section bg-light">
     <div class="container">
       <div class="section-header">
@@ -644,6 +646,7 @@
       </div>
     </div>
   </section>
+  END TEAM SECTION -->
 
 
 

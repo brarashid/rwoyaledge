@@ -85,6 +85,30 @@ function initReveal() {
   });
 }
 
+// ===== THEME TOGGLE =====
+(function () {
+  var html = document.documentElement;
+  var btn = document.getElementById('themeToggle');
+  if (!btn) return;
+
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    btn.innerHTML = theme === 'dark'
+      ? '<i data-lucide="sun"></i>'
+      : '<i data-lucide="moon"></i>';
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // Sync icon with the theme already set by the inline head script
+  var current = html.getAttribute('data-theme') || 'light';
+  btn.innerHTML = current === 'dark' ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
+
+  btn.addEventListener('click', function () {
+    applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+})();
+
 // ===== INIT =====
 window.addEventListener('load', function () {
   lucide.createIcons();
